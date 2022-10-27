@@ -1,3 +1,5 @@
+//const { default: axios } = require("axios");
+
 //User Class
 class User {
     constructor(name, surname, dob, contact, email, password) {
@@ -101,14 +103,18 @@ class User {
 }
 
 //Create New User
-let frmUser = new Vue ({
+let frmRegistration = new Vue ({
     el : '#frmRegistration',
-    //Create user functionality
+    data : {
+        newUser : { name : "", surname : "", dob : "", contact : "", email : "", password : "" }
+    },
+    //Functionality
     methods : {
         navigateToSignIn : function() {
             window.location.href = 'signIn.html';
         },
-        createUser : function() {           
+        //Validate User Input
+        validateUser : function() {           
             let userName = document.getElementById("clientName").value;
             let userSurname = document.getElementById("clientLastName").value;
             let userDob = document.getElementById("clientDoB").value;
@@ -117,7 +123,6 @@ let frmUser = new Vue ({
             let userPassword = document.getElementById("clientPassword").value;
             let userRePassword = document.getElementById("clientReEnterPassword").value;
 
-            //User Input Validation
             if (userName == "" || userSurname == "" || userDob == "" || userContact == "" || userEmail == "" || userPassword == "" || userRePassword == "") {
                 alert("Please Ensure that All Fields have been Filled");
             }
@@ -131,25 +136,46 @@ let frmUser = new Vue ({
                 alert("Please Ensure that your Password is at least 8 characters");
             }
             else if (userPassword == userRePassword) {
-                let newUser = new User();
-
-                let userInfo = { name : userName, surname : userSurname, dob : userDob, contact : userContact, email : userEmail, password : userPassword};
-                newUser.createNewUser(userInfo);
-                alert("New User Successfully Created.  Please Attempt and Sign In.");
-                window.location.href = 'signIn.html';
+                this.saveNewUser();
+                event.preventDefault();
             }
             else {
                 alert("Please Ensure that the Entered Passwords Match");
             }            
+        },
+        saveNewUser : function() {
+            var userData = frmRegistration.toFormData(frmRegistration.newUser);
+
+            axios.post('http://localhost/onlineStoreApi/client.php?crud=create', userData)
+            .then(function(response){
+                console.log(response);
+                frmRegistration.newUser = { name : "", surname : "", dob : "", contact : "", email : "", password : "" };
+
+                if (response.data.error) {
+                    alert(response.data.message);
+                }
+                else {
+                    alert(response.data.message);
+                }
+            });
+        },
+        toFormData : function(userObj) {
+            var form_data = new FormData();
+            for (var key in userObj) {
+                console.log(key, userObj[key]);
+                form_data.append(key, userObj[key]);
+            }
+            console.log(form_data);
+            return form_data;          
         }
     },
     //Run the functions on start
     created : function() {
-
+        
     },
     //Continiously run these functions
     mounted() {
-
+        
     }
 })
 
