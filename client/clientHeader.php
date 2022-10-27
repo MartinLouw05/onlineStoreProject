@@ -4,7 +4,7 @@
 		<title>Shopping Cart</title>
 
 		<?php session_start(); ?>
-		<link rel='stylesheet' type='text/css' href='../css/startUp.css'>
+		<link rel='stylesheet' type='text/css' href='../css/landingPage.css'>
 		<link rel='stylesheet' type='text/css' href='../css/client.css'>
 		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>

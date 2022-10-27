@@ -1,4 +1,3 @@
-
 //User Class
 class User {
     constructor(name, surname, dob, contact, email, password) {
@@ -84,7 +83,7 @@ class User {
 
     //Create New User
     createNewUser(data) {
-        axios.post('http://localhost:3000/users', {
+        /*axios.post('http://localhost:3000/users', {
                 name : data.name,
                 surname : data.surname,
                 dateOfBirth : data.dob,
@@ -97,7 +96,7 @@ class User {
             })
             .catch(function (error) {
                 console.log(error);
-            });
+            });*/
     }
 }
 
@@ -106,6 +105,9 @@ let frmUser = new Vue ({
     el : '#frmRegistration',
     //Create user functionality
     methods : {
+        navigateToSignIn : function() {
+            window.location.href = 'signIn.html';
+        },
         createUser : function() {           
             let userName = document.getElementById("clientName").value;
             let userSurname = document.getElementById("clientLastName").value;
@@ -115,26 +117,30 @@ let frmUser = new Vue ({
             let userPassword = document.getElementById("clientPassword").value;
             let userRePassword = document.getElementById("clientReEnterPassword").value;
 
-            console.log("attempt");
-
+            //User Input Validation
             if (userName == "" || userSurname == "" || userDob == "" || userContact == "" || userEmail == "" || userPassword == "" || userRePassword == "") {
-                event.preventDefault();
                 alert("Please Ensure that All Fields have been Filled");
             }
-            else {
-                if (userPassword == userRePassword) {
-                    let newUser = new User();
-
-                    let userInfo = { name : userName, surname : userSurname, dob : userDob, contact : userContact, email : userEmail, password : userPassword};
-                    newUser.createNewUser(userInfo);
-                    alert("New User Successfully Created.  Please Attempt and Sign In.");
-                    window.location.href = 'signIn.php';
-                }
-                else {
-                    event.preventDefault();
-                    alert("Please Ensure that the Entered Passwords Match");
-                }
+            else if (userContact.length !== 10) {
+                alert("Please Ensure that your Contact Number is 10 characters");
             }
+            else if (!userEmail.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
+                alert("Please Ensure that your Email Address is in the Correct Format");
+            }
+            else if (userPassword.length < 8) {
+                alert("Please Ensure that your Password is at least 8 characters");
+            }
+            else if (userPassword == userRePassword) {
+                let newUser = new User();
+
+                let userInfo = { name : userName, surname : userSurname, dob : userDob, contact : userContact, email : userEmail, password : userPassword};
+                newUser.createNewUser(userInfo);
+                alert("New User Successfully Created.  Please Attempt and Sign In.");
+                window.location.href = 'signIn.html';
+            }
+            else {
+                alert("Please Ensure that the Entered Passwords Match");
+            }            
         }
     },
     //Run the functions on start
@@ -147,35 +153,12 @@ let frmUser = new Vue ({
     }
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //import axios from 'axios';
 //const axios = require('axios').default;
 
 //Navigation Variables
 let btnBats = document.getElementById('btnBats');
 let btnSignIn = document.getElementById('btnSignIn');
-
-window.onload = function() {
-    console.log('hi');
-}
 
 function test() {
 axios.get('http://localhost:3000/users')
@@ -204,19 +187,3 @@ function test1() {
         console.log(error);
       });
     }
-
-//Navigation Functionality
-if (!btnSignIn) {
-
-}
-else {
-    btnSignIn.addEventListener('click', (e) => {
-        document.location.href = './startUp/signIn.php';
-    })
-}
-
-function getRequest() {
-    fetch('http://localhost/onlineStoreApi/users.php/')
-        .then(response => response.json())
-        .then(data => {console.log(data)});
-}

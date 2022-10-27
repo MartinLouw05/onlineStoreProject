@@ -4,7 +4,7 @@
 		<title>Cricker Direct Password Assistance</title>
 
 		<?php session_start(); ?>
-		<link rel='stylesheet' type='text/css' href='../css/startUp.css'>			
+		<link rel='stylesheet' type='text/css' href='../css/landingPage.css'>			
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">	
 		<?php require ('../functions/funcStartUp.php'); ?>
 	</head>
