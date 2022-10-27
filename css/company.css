@@ -1,0 +1,134 @@
+
+/* --about.php-- */
+
+.frmAbout {
+    text-align: left;
+    padding: 10px;
+    background-color: rgba(0,0,0,.2);
+    border: solid;
+    border-width: 0px;
+    border-radius: 10px;
+    margin: 0.5%;
+    margin-left: 10%;
+    margin-right: 10%;    
+    color: whitesmoke;
+}
+
+.aboutHeader {
+    grid-area: aboutHeader;
+}
+
+.aboutInfo {
+    grid-area: aboutInfo;
+}
+
+.aboutDevHeader {
+    grid-area: aboutDevHeader;
+}
+
+.aboutDevInfo {
+    grid-area: aboutDevInfo;
+}
+
+.aboutGrid {
+    display: grid;
+    grid-template-areas: 
+        'aboutHeader aboutHeader aboutHeader'
+        'aboutInfo aboutInfo aboutInfo'
+        'aboutDevHeader aboutDevHeader aboutDevHeader'
+        'aboutDevImage aboutDevInfo aboutDevInfo';
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 10px;
+    margin: 0.5%;
+    background-color: rgba(0,0,0,.2);
+    border: solid;
+    border-radius: 5px;
+    border-width: 0px;
+    text-align: left;
+}
+
+.aboutDevHeader {
+    border: solid;
+    border-width: 0px;
+    border-top-width: 1px;
+    border-color: whitesmoke;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.devImage {
+    border: solid;
+    border-width: 0.1px;
+    border-color: burlywood;
+    border-radius: 50%;
+}
+
+
+/* --contactUs.php-- */
+
+.frmContact {
+    text-align: left;
+    padding: 1px;
+    background-color: rgba(0,0,0,.2);
+    border: solid;
+    border-width: 0px;
+    border-radius: 10px;
+    margin: 0.5%;
+    margin-left: 10%;
+    margin-right: 10%;    
+    color: whitesmoke;
+}
+
+.contactMap {
+    grid-area: contactMap;
+}
+
+.contactMapInfo {
+    grid-area: contactMapInfo;
+}
+
+.contactUsGrid {
+    display: grid;
+    grid-template-areas: 
+        'contactMap contactMap contact contact'
+        'contactMap contactMap contact contact'
+        'contactMapInfo contactMapInfo contact contact';
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 10px;
+    margin: 0.5%;
+    border: solid;
+    border-radius: 5px;
+    border-width: 0px;
+    text-align: left;
+}
+
+.contactUsGrid > div {
+    background-color: rgba(0,0,0,.2);
+    border: solid;
+    border-radius: 5px;
+    border-width: 0px;
+    text-align: left;
+    padding: 10px;
+}
+
+.mapouter{
+    position:relative;
+    text-align:right;
+    width:600px;
+    height:400px;
+}
+
+.gmap_canvas {
+    overflow:hidden;
+    background:none!important;
+    width:600px;
+    height:400px;
+}
+
+.gmap_iframe {
+    width:600px!important;
+    height:400px!important;
+}
+

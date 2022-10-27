@@ -1,0 +1,338 @@
+
+.productTitle {
+    grid-area: productTitle;
+}
+
+.productGrid {
+    display: grid;
+    grid-template-areas: 
+        'productTitle productTitle productTitle productTitle'
+        'productItem productItem productItem productItem';
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    background-color: rgba(0,0,0,.2);
+    padding: 10px;
+    margin: 0.5%;
+    margin-left: 10%;
+    margin-right: 10%;
+    border: solid;
+    border-radius: 5px;
+    border-width: 0px;
+    text-align: center;
+}
+
+.productTitle {
+    text-align: left;
+}
+
+.productItem {
+    cursor: pointer;
+    display: grid;
+    grid-template-areas: 
+        'productImage'
+        'productName'
+        'productBrand'
+        'productDesc'
+        'productPrice';
+    grid-template-columns: repeat(1, 1fr);
+    gap: 0px;
+    background-color: rgba(0,0,0,.3);
+    padding: 10px;
+    margin: 0.5%;
+    border: solid;
+    border-radius: 5px;
+    border-width: 0px;
+    text-align: center;
+}
+
+.productImageDisplay {
+    width: 270px;
+}
+
+.productName {
+    text-align: left;
+    margin-top: 5px;
+}
+
+.productBrand > h4 {
+    text-align: left;
+    font-size: large;
+}
+
+.productDesc > p {
+    text-align: left;
+    font-size: small;
+}
+
+.productPrice {
+    text-align: left;
+    font-weight: bold;
+    font-size: large;
+}
+
+.productHelp {
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-left: 5px;
+}
+
+.productHelp > div > h3 {
+    font-size: larger;
+}
+
+.productHelpDesc {
+    margin-top: -5px;
+    padding-left: 22px;
+    font-size: small;
+    margin-bottom: 50px;
+}
+
+.productHelpDesc > p > a {
+    color: lightblue;
+    cursor: pointer;
+}
+
+
+.frmProductInfo {
+    background-color: rgba(0,0,0,.2);
+    border: solid;
+    border-radius: 5px;
+    border-width: 0px;
+    padding: 4px;
+    margin: 0.5%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.productInfoImage {
+    grid-area: productInfoImage;
+}
+
+.productInformation {
+    grid-area: productInformation;
+}
+
+.productInfoGrid {
+    display: grid;
+    grid-template-areas: 
+        'productInfoImage productInfoImage productInfoImage productInformation productInformation productPricing';
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    background-color: rgba(0,0,0,.1);
+    padding: 10px;
+    margin: 0.5%;
+    border: solid;
+    border-radius: 5px;
+    border-width: 0px;
+    text-align: center;
+}
+
+.productInfoImageDisplay {
+    grid-area: productInfoImageDisplay;
+}
+
+.productInfoImage {
+    display: grid;
+    grid-template-areas: 
+        'productInfoImageList productInfoImageDisplay productInfoImageDisplay productInfoImageDisplay productInfoImageDisplay productInfoImageDisplay productInfoImageDisplay';
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0px;
+    padding: 10px;
+    border: solid;
+    border-radius: 5px;
+    border-width: 0px;
+    text-align: center;
+}
+
+.productInfoImageDisplayItem {
+    cursor: pointer;
+    width: 600px;
+}
+
+.productInfoImageList {
+    display: grid;
+    grid-template-areas: 
+        'productInfoImageListDisplay';
+    grid-template-columns: repeat(1, 1fr);
+    grid-auto-rows: min-content;
+    gap: 10px;
+    margin: 0.5%;
+    border: solid;
+    border-radius: 5px;
+    border-width: 0px;
+    text-align: center;
+}
+
+.productInfoImageListDisplayItem {
+    cursor: pointer;
+    width: 50px;
+}
+
+.productInformation {
+    display: grid;
+    grid-template-areas:
+        'productInfoName'
+        'productInfoBrand'
+        'productInfoDesc'
+        'productInfoAdditional';
+    grid-template-columns: repeat(1, 1fr);
+    grid-auto-rows: min-content;
+    gap: 0px;
+    padding: 10px;
+    margin: 0.5%;
+    border: solid;
+    border-radius: 5px;
+    border-width: 0px;
+    text-align: left;
+}
+
+.productPricing {
+    display: grid;
+    grid-template-areas:
+        'productInfoPrice'
+        'productInfoPriceAdditional'
+        'productAddToCart';
+    grid-template-columns: repeat(1, 1fr);
+    grid-auto-rows: min-content;
+    gap: 0px;
+    padding: 10px;
+    margin: 0.5%;
+    border: solid;
+    border-width: 0px;
+    border-left-width: 1px;
+    text-align: center;
+}
+
+.productInfoPrice {
+    text-align: left;
+    font-weight: bold;
+    font-size: xx-large;
+    padding-left: 10px;
+    margin-bottom: 5px;
+}
+
+.btnAddToCart {
+    border: solid;
+    border-width: 1px;
+    border-color: black;
+    border-radius: 5px;
+    background-color: limegreen;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.carousel {
+    border-radius: 0px;
+    background-color: transparent;
+    text-align: center;
+    height: min-content;
+    cursor: auto;
+    width: 100%;
+}
+
+.carouselGrid {
+    display: grid;
+    grid-template-areas:
+        'carouselItem carouselItem carouselItem carouselItem';
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: min-content;
+    gap: 0px;
+    padding: 10px;
+    margin: 0.5%;
+    border: solid;
+    border-width: 0px;
+    text-align: center;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.carouselItem {
+    cursor: pointer;
+    display: grid;
+    grid-template-areas:
+        'carouselItemImage'
+        'carouselItemName'
+        'carouselItemBrand'
+        'carouselItemPrice'
+        'carouselItemAddToCart';
+    grid-template-columns: repeat(1, 1fr);
+    gap: 0px;
+    padding: 10px;
+    margin: 0.5%;
+    border: solid;
+    border-width: 0px;
+    text-align: center;
+}
+
+.carouselItemImageDisplay {
+    width: 200px;
+}
+
+.carouselItemName  {
+    text-align: left;
+    padding-left: 75px;
+}
+
+.carouselItemName > h3 {
+    font-size: x-large;
+}
+
+.carouselItemBrand  {
+    text-align: left;
+    padding-left: 75px;
+}
+
+.carouselItemBrand > h4 {
+    font-size: large;
+}
+
+.carouselItemPrice  {
+    text-align: left;
+    font-size: large;
+    padding-left: 75px;
+    margin-bottom: 5px;
+}
+
+.btnCarouselAddToCart {
+    border: solid;
+    border-width: 1px;
+    border-color: black;
+    border-radius: 5px;
+    background-color: limegreen;
+    padding: 5px;
+    width: 200px;
+    margin-top: 10px;
+}
+
+.carousel-control-next {
+    border: solid;
+    margin-right: -90px;
+    border: solid;
+    border-width: 0px;
+    background-color: transparent;
+}
+
+.carousel-control-next-icon {
+    filter: invert(1);
+}
+
+.carousel-control-prev {
+    width: 10px;
+    margin-left: -90px;
+    border: solid;
+    border-width: 0px;
+    background-color: transparent;
+}
+
+.carousel-control-prev-icon {
+    filter: invert(1);
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}

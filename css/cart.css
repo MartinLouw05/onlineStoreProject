@@ -1,0 +1,125 @@
+
+.cartArea {
+    background-color: rgba(0,0,0,.2);
+    padding: 10px;
+    margin: 0.5%;
+    margin-left: 10%;
+    margin-right: 10%;
+    border: solid;
+    border-radius: 5px;
+    border-width: 0px;
+    text-align: center;
+}
+
+.cartDesc {
+    grid-area: cartDesc;
+}
+
+.cartGrid {
+    display: grid;
+    grid-template-areas: 
+        'cartImage cartDesc cartDesc cartPrice';
+    grid-template-columns: 15%, 50%, 15%;
+    gap: 10px;
+    padding: 10px;
+    margin: 0.5%;
+    border: solid;
+    border-radius: 5px;
+    border-width: 0px;
+    text-align: center;
+}
+
+.cartTitle {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.cartTitlePrice {
+    position: relative;
+    margin-right: 1.5%;
+}
+
+.cartTitlePrice > h3 {
+    font-size: large;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.cartDesc {
+    text-align: left;
+}
+
+.cartPrice {
+    text-align: right;
+    position: relative;
+}
+
+.btnRemoveProduct {
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 20px;
+    border: solid;
+    border-width: 0px;
+    background-color: transparent;
+    font-size: xx-large;
+}
+
+.removeInfo {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: small;
+    margin-right: 5px;
+}
+
+.productImage {
+    height: 200px;
+}
+
+.cartDesc > div > select {
+    margin-top: 2px;
+}
+
+select {
+    width: 75px;
+    border: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.purchaseInfo {
+    font-size: small;
+    font-style: italic;
+    color: red;
+}
+
+.cartTotal {
+    text-align: right;
+    margin-right: 1%;
+    margin-bottom: 5px;
+}
+
+.btnCheckout {
+    margin-top: 15px;
+    margin-right: -10px;
+    border: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: greenyellow;
+}
+
+.shoppingDisclaimer {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 50px;
+    text-align: right;    
+    font-size: small;
+}
+

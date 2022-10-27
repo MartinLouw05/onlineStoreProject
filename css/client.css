@@ -1,0 +1,110 @@
+
+/* --client.php-- */
+
+.frmClient {
+    text-align: left;
+    padding: 10px;
+    background-color: rgba(0,0,0,.2);
+    border: solid;
+    border-width: 0px;
+    border-radius: 10px;
+    margin: 0.5%;
+    margin-left: 10%;
+    margin-right: 10%;    
+    color: whitesmoke;
+}
+
+.clientGrid {
+    display: grid;
+    grid-template-areas: 
+        'gridAcc gridOrders gridBilling'
+        'gridWishlist gridSupport';
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 187.4px);
+    gap: 10px;
+    padding: 10px;
+    margin: 0.5%;
+    border: solid;
+    border-radius: 5px;
+    border-width: 0px;
+    text-align: left;
+}
+
+.gridAcc, .gridOrders, .gridBilling, .gridWishlist, .gridSupport {
+    text-align: left;
+    padding: 10px;
+    background-color: rgba(0,0,0,.2);
+    border: solid;
+    border-width: 0px;
+    border-radius: 10px;
+}
+
+a {
+    float: right;
+}
+
+.gridSupport > h4 > a {
+    font-size: xx-large;
+}
+
+.clientBtn {
+    cursor: pointer;
+    border: solid;
+    border-width: 0px;
+    background-color: transparent;
+    color: aqua;
+    margin-top: 5px;
+}
+
+/* --clientAccount.php-- */
+
+.frmAccInfo {
+    text-align: left;
+    padding: 10px;
+    background-color: rgba(0,0,0,.2);
+    border: solid;
+    border-width: 0px;
+    border-radius: 10px;
+    margin: 0.5%;
+    margin-left: 20%;
+    margin-right: 20%;    
+    color: whitesmoke;
+}
+
+.accInfo {
+    text-align: left;
+    padding: 10px;
+    margin: 0.5%;
+    background-color: rgba(0,0,0,.2);
+    border: solid;
+    border-width: 0px;
+    border-radius: 10px;
+}
+
+.accInfo > div > label {
+    margin-top: 10px;
+}
+
+
+.btnUpdateSubmit, .btnCancelSubmit {
+    cursor: pointer;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    width: 40%;
+    height: 35px;
+    background-color: limegreen;
+    border: solid;
+    border-width: 0.5px;
+    border-radius: 5px;
+}
+
+.btnCancelSubmit {
+    float: right;
+    background-color: burlywood;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

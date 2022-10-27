@@ -1,0 +1,393 @@
+
+.home {
+    background-image: url('https://t4.ftcdn.net/jpg/02/19/80/13/360_F_219801337_3kbasqLvgbUxAGVDH8QS35Sm4SEiPJFJ.jpg');
+    background-size: cover; 
+    background-position: center;   
+    background-repeat: no-repeat;
+}
+
+.title {
+    grid-area: title;
+}
+
+.btnCompanyTitle {
+    cursor: pointer;
+    border: solid;
+    border-width: 0;
+    background-color: transparent;
+    color: whitesmoke;
+    font-weight: bold;
+}
+
+.titleButtons {
+    grid-area: titleButtons;
+    text-align: right;
+    padding-top: 7.5px;
+}
+
+.navigation {
+    grid-area: navigation;
+}
+
+.headerGrid {
+    display: grid;
+    grid-template-areas: 
+        'title titleButtons' 
+        'navigation navigation';
+    gap: 10px;
+    background-color: black;
+    padding: 10px;
+    color: whitesmoke;
+}
+
+.navSearch {
+    border: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    font-style: italic;
+    padding-left: 5px;
+    width: 500px;
+    height: 40px;
+}
+
+.navSearchBtn {
+    cursor: pointer;
+    border: solid;
+    border-width: 0.1px;
+    border-color: black;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: yellow;
+    color: whitesmoke;
+    height: 40px;
+    margin-left: -40.5px;
+    margin-right: 20px;
+}
+
+.navBtn, .btnAccInfo {
+    cursor: pointer;
+    border: solid;
+    border-width: 0px;
+    background-color: transparent;
+    color: whitesmoke;
+    height: 40px;
+    width: 75px;
+    margin-left: 10px;
+}
+
+.btnAccInfo {
+    border-radius: 50px;
+    height: 40px;
+    width: 40px;
+    background-color: aliceblue;
+}
+
+.slideshow {
+    grid-area: slideshow;
+}
+
+.headerTitle {
+    grid-area: headerTitle;
+}
+
+.mainGrid {
+    display: grid;
+    grid-template-areas: 
+        'slideshow slideshow slideshow slideshow'
+        'headerTitle headerTitle headerTitle headerTitle'
+        'item item item item';
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    background-color: rgba(0,0,0,.3);
+    padding: 10px;
+    margin: 0.5%;
+    margin-left: 10%;
+    margin-right: 10%;
+    border: solid;
+    border-radius: 5px;
+    border-width: 0px;
+    text-align: center;
+}
+
+.slideshow {
+    height: 400px;
+}
+
+.headerTitle {
+    grid-area: headerTitle;
+    text-align: left;
+    padding-left: 2.5%;
+    margin: 0;
+}
+
+.carousel {
+    cursor: pointer;
+    text-align: center;
+    height: 400px;
+    background-color: rgba(0,0,0,.4);
+    border: solid;
+    border-radius: 5px;
+    border-width: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.carouselImage {
+    height: 390px;
+}
+
+.btnBats, .btnGloves, .btnBags, .btnArm, .btnAccessories, .btnPads, .btnHelmets, .btnBalls, .btnThigh, .btnOther, .btnApparel, .btnFootwear {
+    cursor: pointer;
+    width: 320px;
+    height: 320px;
+    border: solid;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    border-width: 0px;
+    border-radius: 10px;
+    border-color: black;
+    font-size: larger;
+    color: aliceblue;
+    text-align: left;
+    background-position: center;
+}
+
+.btnBats {
+    background-image: url('https://morkelsport.co.za/wp-content/uploads/2021/04/dsc-munro-15.jpg');
+    background-size: contain;
+}
+
+.btnGloves {
+    background-image: url('https://www.tcscricket.com/wp-content/uploads/2021/08/KOOKABURRA-GHOST-900-BATTING-GLOVES-5-510x510.jpg');
+    background-size: contain;
+}
+
+.btnBags {
+    background-image: url('https://cdn.shopify.com/s/files/1/0276/1811/5618/products/2b2d566e68017e67307e2c13cd1322b5ad19a868_500x.png?v=1602345668');
+    background-size: contain;
+}
+
+.btnArm {
+    background-image: url('https://contents.mediadecathlon.com/p1654984/f3885c50fcb87e13cab5f5196549ec65/p1654984.jpg?format=auto&quality=70&f=1024x0');
+    background-size: contain;
+}
+
+.btnAccessories {
+    background-image: url('https://www.sstoncricket.com/media/catalog/tmp/category/accessories_1_.png');
+    background-size: contain;
+}
+
+.btnPads {
+    background-image: url('https://cdn.shopify.com/s/files/1/0276/1811/5618/products/4c5a3554bc6fe380bd64aa0c17e3584a4034cc36_600x.png?v=1604931689');
+    background-size: contain;
+}
+
+.btnHelmets {
+    background-image: url('https://cdn.shopify.com/s/files/1/0276/1811/5618/products/67b0fdbaa1431dcb24f30d8e01cbc8a743a8ecf5_600x.png?v=1603116728');
+    background-size: contain;
+}
+
+.btnBalls {
+    background-image: url('https://staticc.sportskeeda.com/wp-content/uploads/2015/05/cricket-balls-1432109232-2369680.jpg');
+    background-size: cover;    
+}
+
+.btnThigh {
+    background-image: url('https://cricketcompanystore.co.za/wp-content/uploads/2021/06/AERO-P1.jpg');
+    background-size: contain;
+}
+
+.btnOther {
+    background-image: url('http://btlmsports.co.za/wp-content/uploads/2018/07/kookaburra_spring_return_cricket_stumps-1.jpg');
+    background-size: contain;
+}
+
+.btnApparel {
+    background-image: url('https://www.mrcrickethockey.com/wp-content/uploads/2019/03/animage-1.png');
+    background-size: contain;
+    background-color: black;
+    background-repeat: no-repeat;
+}
+
+.btnFootwear {
+    background-image: url('https://cdn.shopify.com/s/files/1/0274/3707/2468/products/0N_hmMI_1024x1024.png?v=1645014488');
+    background-size: contain;
+    background-color: black;
+    background-repeat: no-repeat;
+}
+
+.footerGrid {
+    display: grid;
+    grid-template-areas: 
+        'footer';
+    gap: 10px;
+    background-color: black;
+    padding: 10px;
+    color: whitesmoke;
+    text-align: center;
+}
+
+.signInGrid, .registrationGrid {
+    display: grid;
+    grid-template-areas: 
+        'signInHeader'
+        'signInMain'
+        'signInRegister';
+    gap: 10px;
+    background-color: rgba(0,0,0,.2);
+    padding: 10px;
+    padding-bottom: 5px;
+    color: whitesmoke;
+    text-align: center;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 33.3%;
+    margin-right: 33.3%;
+    width: 33.3%;
+    border: solid;
+    border-width: 0px;
+    border-radius: 10px;
+}
+
+.signInHeader, .registrationHeader {
+    background-image: url('https://media.istockphoto.com/photos/side-view-of-striped-green-grass-soccer-field-picture-id1414353328?k=20&m=1414353328&s=612x612&w=0&h=Z_ZI5yLsiQf4RLr2pnNT5Xh88KkumdQ28gfODqpS1dg=');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: solid;
+    border-width: 0px;
+    border-radius: 10px;
+    color: black;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.signInMain, .registrationMain {
+    text-align: left;
+    padding: 10px;
+    background-color: rgba(0,0,0,.3);
+    border: solid;
+    border-width: 0px;
+    border-radius: 10px;
+}
+
+.signInMain > div > input {
+    margin-bottom: 5px;
+    margin-top: -3px;
+}
+
+.btnSignInSubmit, .btnRegistationSubmit {
+    margin-top: 10px;
+    width: 100%;
+    height: 35px;
+    background-color: limegreen;
+    border: solid;
+    border-width: 0.5px;
+    border-radius: 5px;
+}
+
+.signInMain > div > p {
+    margin-top: 5px;
+    font-size: small;
+    padding-left: 5px;
+}
+
+.signInMain > div > p > a {
+    color: lightblue;
+    cursor: pointer;
+}
+
+.btnForgotPassword {
+    color: lightblue;
+    font-size: small;
+    padding-left: 5px;
+    border: solid;
+    border-width: 0px;
+    background-color: transparent;
+}
+
+.registerInfo, .signInInfo, .forgotInfo {
+    font-size: large;
+    color: grey;
+    margin-bottom: 0px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.forgotInfo {
+    color: whitesmoke;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.signInRegister, .registrationSignIn {
+    text-align: left;
+    padding: 10px;
+    background-color: rgba(0,0,0,.3);
+    border: solid;
+    border-width: 0px;
+    border-radius: 10px;
+}
+
+.btnSignInCreate, .btnRegistrationSignIn {
+    width: 100%;
+    height: 35px;
+    background-color: burlywood;
+    border: solid;
+    border-width: 0.5px;
+    border-radius: 5px;
+}
+
+.signInFooter {
+    text-align: center;
+}
+
+.passwordInfo {
+    font-size: smaller;
+    font-style: italic;
+    padding-left: 5px;
+}
+
+.registrationMain > div > input {
+    margin-bottom: 5px;
+    margin-top: -3px;
+}
+
+.registrationMain > div > p {
+    margin-top: 5px;
+    font-size: small;
+}
+
+.registrationMain > div > p > a {
+    color: lightblue;
+    cursor: pointer;
+}
+
+.navbar {
+    border: solid;
+    border-width: 0px;
+    border-radius: 10px;
+    color: black;
+}
+
+.btnAbout, .btnContactUs {
+    background-color: transparent;
+    color: whitesmoke;
+    width: 100px;
+    cursor: pointer;
+}
+
+hr {
+    background-color: whitesmoke;
+    width: 100%;
+}
+
+.footerInfo {
+    padding-bottom: 10px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
