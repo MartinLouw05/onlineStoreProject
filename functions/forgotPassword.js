@@ -1,17 +1,11 @@
 //const { default: axios } = require("axios");
 
 let frmSignInGrid = new Vue ({
-    el : '#frmSignInGrid',
+    el : '#frmForgotPasswordGrid',
     //Functionality
-    methods : {
-        navigateToRegistration : function() {
-            window.location.href = 'registerClient.html';
-        },        
+    methods : {    
         navigateToLandingPage : function() {
             window.location.href = '../landingPage.html';
-        },
-        navigateToForgotPassword : function() {
-            window.location.href = 'forgotPassword.html';
         }, 
         getAllClients : function() {
             axios.get('http://localhost/onlineStoreApi/client.php') 

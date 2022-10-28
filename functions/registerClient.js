@@ -113,6 +113,9 @@ let frmRegistration = new Vue ({
         navigateToSignIn : function() {
             window.location.href = 'signIn.html';
         },
+        navigateToLandingPage : function() {
+            window.location.href = '../landingPage.html';
+        },
         //Validate User Input
         validateUser : function() {           
             let userName = document.getElementById("clientName").value;
@@ -135,19 +138,23 @@ let frmRegistration = new Vue ({
             else if (userPassword.length < 8) {
                 alert("Please Ensure that your Password is at least 8 characters");
             }
+            else if (userPassword !== userRePassword) {
+                alert("Please Ensure that the Entered Passwords Match");   
+                window.location.href = 'registerClient.html';             
+            }
             else if (userPassword == userRePassword) {
                 this.saveNewUser();
                 event.preventDefault();
-            }
+            }  
             else {
-                alert("Please Ensure that the Entered Passwords Match");
-            }            
+                alert("Something Went Wrong While Attempting to Save the User's Information")
+            }          
         },
         saveNewUser : function() {
             var userData = frmRegistration.toFormData(frmRegistration.newUser);
 
             axios.post('http://localhost/onlineStoreApi/client.php?crud=create', userData)
-            .then(function(response){
+            .then (function(response) {
                 console.log(response);
                 frmRegistration.newUser = { name : "", surname : "", dob : "", contact : "", email : "", password : "" };
 
@@ -160,8 +167,9 @@ let frmRegistration = new Vue ({
             });
         },
         toFormData : function(userObj) {
-            var form_data = new FormData();
-            for (var key in userObj) {
+            let form_data = new FormData();
+
+            for (let key in userObj) {
                 console.log(key, userObj[key]);
                 form_data.append(key, userObj[key]);
             }

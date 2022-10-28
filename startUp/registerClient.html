@@ -13,7 +13,7 @@
         <form id='frmRegistration' class='registrationGrid'>
             <header class='frmRegistration'>
                 <div class='registrationHeader'>
-                    <h1>Cricket Direct</h1>
+                    <h1 @click="navigateToLandingPage()">Cricket Direct</h1>
                 </div>
             </header>
             <main>               
@@ -43,7 +43,7 @@
                         <label>Contact Number:</label>
                     </div>
                     <div>
-                        <input type='number' id='clientContact' name='clientContact' v-model="newUser.contact" class='form-control' minlength="10" maxlength="10" required>
+                        <input type='tel' id='clientContact' name='clientContact' v-model="newUser.contact" class='form-control' pattern="[0-9]{3}[0-9]{3}[0-9]{4}" minlength="10" maxlength="10" required>
                     </div>
                     <div>
                         <label>Email:</label>

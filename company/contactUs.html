@@ -1,28 +1,29 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Shopping Cart</title>
+		<title>About Cricket Direct</title>
 
-		<?php session_start(); ?>
+		<script type='module' src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 		<link rel='stylesheet' type='text/css' href='../css/landingPage.css'>
 		<link rel='stylesheet' type='text/css' href='../css/company.css'>
 		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">	
-		<?php require ('../functions/funcCompany.php'); ?>
+		<script src='../functions/contactUs.js' defer></script>
 	</head>
 	<body>
 		<header>
-			<form method='post' class='headerGrid'>
+			<form id="frmHeaderGrid" class='headerGrid'>
 				<div class='title'>
-					<h1><button name='btnCompanyTitle' class='btnCompanyTitle'>CRICKET DIRECT</button></h1>
+					<h1 @click="navigateToLandingPage()">CRICKET DIRECT</h1>
 				</div>
 				<div class='titleButtons'>
 					<input type='text' placeholder='Search' class='navSearch'>
 					<button class='navSearchBtn'>&#128269</button>
-                    <button id='btnAccInfo' name='btnAccInfo' class='btnAccInfo'>&#128100</button>
-					<button id='btnSignIn' name='btnSignIn' class='navBtn'>Sign In</button>
-					<button id='btnCart' name='btnCart' class='navBtn'>&#128722</button>					
+					<button type="button" id='btnAccInfo' name='btnAccInfo' @click="navigateToClient()" class='btnAccInfo'>&#128100</button>
+					<button type="button" id='btnSignIn' name='btnSignIn' @click="navigateToSignIn();" class='navBtn'>Sign In</button>
+					<button type="button" id='btnCart' name='btnCart' @click="navigateToCart();" class='navBtn'>&#128722</button>						
 				</div>
 
 				<div class='navigation'>
@@ -162,4 +163,27 @@
 				</div>	
 			</form>		
 		</header>
-		<main>
+	<main>
+        <div class='frmContact'>
+            <div class='contactUsGrid'>
+                <div class='contactMap'>
+                <div class="mapouter"><div class="gmap_canvas"><iframe class="gmap_iframe" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=centurion mall&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href="https://piratebay-proxys.com/">Pirate bay</a></div></div>
+                </div>
+                <div class='contactMapInfo'>info</div>
+                <div class='contact'>info</div>
+                <div class='contact'>info</div>
+            </div>
+        </div>
+    </main>
+    <footer class='footerGrid'>
+        <form id="frmFooter">
+            <button type="button" id='btnAbout' name='btnAbout' @click="navigateToAbout()" class='btnAbout'>About</button>
+			<button type="button" id='btnContactUs' name='btnContactUs' @click="navigateToContactUs()" class='btnContactUs'>Contact Us</button>
+        </form>
+        <hr>
+        <div class='footerInfo'>
+            &copy; Created by Pepega
+        </div>			
+    </footer>
+</body>
+</html>

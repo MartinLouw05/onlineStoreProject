@@ -1,6 +1,6 @@
 
 .home {
-    background-image: url('https://t4.ftcdn.net/jpg/02/19/80/13/360_F_219801337_3kbasqLvgbUxAGVDH8QS35Sm4SEiPJFJ.jpg');
+    
     background-size: cover; 
     background-position: center;   
     background-repeat: no-repeat;
@@ -17,6 +17,10 @@
     background-color: transparent;
     color: whitesmoke;
     font-weight: bold;
+}
+
+.title > h1 {
+    cursor: pointer;
 }
 
 .titleButtons {
@@ -250,6 +254,7 @@
 }
 
 .signInHeader, .registrationHeader {
+    cursor: pointer;
     background-image: url('https://media.istockphoto.com/photos/side-view-of-striped-green-grass-soccer-field-picture-id1414353328?k=20&m=1414353328&s=612x612&w=0&h=Z_ZI5yLsiQf4RLr2pnNT5Xh88KkumdQ28gfODqpS1dg=');
     background-position: center;
     background-size: cover;

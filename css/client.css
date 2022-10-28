@@ -1,6 +1,10 @@
 
 /* --client.php-- */
 
+.title > h1 {
+    cursor: pointer;
+}
+
 .frmClient {
     text-align: left;
     padding: 10px;
