@@ -28,7 +28,7 @@ let frmHeader = new Vue ({
     }
 })
 
-
+/*
 let frmFooter = new Vue ({
     el : '#frmFooter',
     methods : {
@@ -47,4 +47,4 @@ let frmFooter = new Vue ({
     mounted() {
         
     }
-})
+})*/
