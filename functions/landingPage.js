@@ -2,6 +2,7 @@
 let frmHeader = new Vue ({
     el : '#frmHeaderGrid',
     data : {
+        categoryList : {},
         brandList : {}
     },
     methods : {
@@ -16,48 +17,11 @@ let frmHeader = new Vue ({
         },
         navigateToClient : function() {
             window.location.href = './client/client.html';
-        },
-        getBrands : function() {
-            axios.get('http://localhost/onlineStoreApi/productBrand.php') 
-            .then(function (response) {
-                // handle success
-                console.log(response);
-                this.brandList = response.data.brand;
-                console.log(this.brandList);
-            })
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-            })
-            .finally(function () {
-                // always executed
-            });
-        },
-        createNavigationHeader : function() {
-            
-        },
-        createNavigation : function() {
-            let form_data = new FormData();
-            form_data.append( "categoryID", "1");
-
-            axios.post('http://localhost/onlineStoreApi/productBrand.php?crud=readByCategory', form_data) 
-            .then(function (response) {
-                // handle success
-                console.log(response);
-            })
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-            })
-            .finally(function () {
-                // always executed
-            });
         }
     },
     //Run the functions on start
     created : function() {
-        this.getBrands();
-        this.createNavigation();
+        
     },
     //Continiously run these functions
     mounted() {
