@@ -211,7 +211,20 @@
     margin-bottom: 5px;
 }
 
+.productInfoAdditional {
+    border: solid;
+    border-width: 0px;
+    border-top-width: 1px;
+    border-color: whitesmoke;
+    padding-top: 10px;
+}
+
+.productInfoAdditional > a {
+    font-weight: bold;
+}
+
 .btnAddToCart {
+    cursor: pointer;
     border: solid;
     border-width: 1px;
     border-color: black;

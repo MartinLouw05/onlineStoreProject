@@ -10,233 +10,81 @@
 		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">	
-        <script src='../functions/header.js' defer></script>
         <script src='../functions/product.js' defer></script>
     </head>
 	<body>
-		<header>
-			<form id="frmHeaderGrid" class='headerGrid'>
-				<div class='title'>
-					<h1 @click="navigateToLandingPage()">CRICKET DIRECT</h1>
-				</div>
-				<div class='titleButtons'>
-					<input type='text' placeholder='Search' class='navSearch'>
-					<button class='navSearchBtn'>&#128269</button>
-					<button id='btnAccInfo' name='btnAccInfo' class='btnAccInfo'>&#128100</button>
-					<button id='btnSignIn' name='btnSignIn' class='navBtn'>Sign In</button>
-					<button id='btnCart' name='btnCart' class='navBtn'>&#128722</button>					
-				</div>
+        <div id="app">
+            <header>
+                <form class='headerGrid'>
+                    <div class='title'>
+                        <h1 @click="navigateToLandingPage()">CRICKET DIRECT</h1>
+                    </div>
+                    <div class='titleButtons'>
+                        <input type='text' placeholder='Search' class='navSearch'>
+                        <button class='navSearchBtn'>&#128269</button>
+						<button type="button" id='btnAccInfo' name='btnAccInfo' @click="navigateToClient()" class='btnAccInfo'>&#128100</button>
+						<button type="button" id='btnSignIn' name='btnSignIn' @click="navigateToSignIn();" class='navBtn'>Sign In</button>
+						<button type="button" id='btnCart' name='btnCart' @click="navigateToCart();" class='navBtn'>&#128722</button>					
+                    </div>
 
-				<div id="headerDropdown" class='navigation'>
-					<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-					<!--<a class="navbar-brand" href="#">Home</a>-->
+                    <div id="headerDropdown" class='navigation'>
+                        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <!--<a class="navbar-brand" href="#">Home</a>-->
 
-					<div id="navbarToggler" class="collapse navbar-collapse">
-						<ul id="navbarDropdown" class="navbar-nav mr-auto mt-2 mt-lg-0">
-							<!-- Create Dropdown Here -->							
-						</ul>
-					</div>
-					</nav>
-				</div>
-			</form>		
-		</header>
-		<main>
-            <form method='post' class='productGrid'>
-                <div class='productTitle'>
-                    <h2>Results</h2>
+                        <div id="navbarToggler" class="collapse navbar-collapse">
+                            <ul id="navbarDropdown" class="navbar-nav mr-auto mt-2 mt-lg-0">
+                                <!-- Create Dropdown Here -->							
+                            </ul>
+                        </div>
+                        </nav>
+                    </div>
+                </form>		
+            </header>
+            <main>
+                <form class='productGrid'>
+                    <div class='productTitle'>
+                        <h2>Results</h2>
+                    </div>
+                    <button type="button" v-for="product in productList" :id="product.product_id" @click="selectedProduct(product); navigateToSelectedProduct();" class='productItem'>
+                        <div class='productImage'>
+                            <img src='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png' class='productImageDisplay'>
+                        </div>
+                        <div class='productName'>
+                            <h3>{{ product.product_name }}</h3>
+                        </div>
+                        <div class='productBrand'>
+                            <h4>{{ product.product_brand_name }}</h4>
+                        </div>
+                        <div class='productDesc'>
+                            <p>{{ product.product_description }}</p>
+                        </div>
+                        <div class='productPrice'>
+                            R {{ product.product_price }}
+                        </div> 
+                    </button>                    
+                </form>
+                <div class='productHelp'>
+                    <div>
+                        <h3>&#128712; NEED ASSISTANCE?</h3>
+                    </div>
+                    <div class='productHelpDesc'>
+                        <p>Please visit our <a>Help</a> or <a>Contact Us</a> section</p>
+                    </div>
                 </div>
-                <button id='1' name='gridProductItem' value='1' class='productItem'>
-                    <div class='productImage'>
-                        <img src='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png' class='productImageDisplay'>
-                    </div>
-                    <div class='productName'>
-                        <h3>Product Name</h3>
-                    </div>
-                    <div class='productBrand'>
-                        <h4>Brand Name</h4>
-                    </div>
-                    <div class='productDesc'>
-                        <p>This is just some random placeholder text for testing the design of the product screen.  This will all be removed once I am able to connect to the api/database and add some data to the database.</p>
-                    </div>
-                    <div class='productPrice'>
-                        R 599.99
-                    </div>                
-                </button>
-                <button id='2' name='gridProductItem' value='2' class='productItem'>
-                    <div class='productImage'>
-                        <img src='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png' class='productImageDisplay'>
-                    </div>
-                    <div class='productName'>
-                        <h3>Product Name</h3>
-                    </div>
-                    <div class='productBrand'>
-                        <h4>Brand Name</h4>
-                    </div>
-                    <div class='productDesc'>
-                        <p>This is just some random placeholder text for testing the design of the product screen.  This will all be removed once I am able to connect to the api/database and add some data to the database.</p>
-                    </div>
-                    <div class='productPrice'>
-                        R 599.99
-                    </div>                
-                </button>
-                <button name='gridProductItem' class='productItem'>
-                    <div class='productImage'>
-                        <img src='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png' class='productImageDisplay'>
-                    </div>
-                    <div class='productName'>
-                        <h3>Product Name</h3>
-                    </div>
-                    <div class='productBrand'>
-                        <h4>Brand Name</h4>
-                    </div>
-                    <div class='productDesc'>
-                        <p>This is just some random placeholder text for testing the design of the product screen.  This will all be removed once I am able to connect to the api/database and add some data to the database.</p>
-                    </div>
-                    <div class='productPrice'>
-                        R 599.99
-                    </div>                
-                </button>
-                <button name='gridProductItem' class='productItem'>
-                    <div class='productImage'>
-                        <img src='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png' class='productImageDisplay'>
-                    </div>
-                    <div class='productName'>
-                        <h3>Product Name</h3>
-                    </div>
-                    <div class='productBrand'>
-                        <h4>Brand Name</h4>
-                    </div>
-                    <div class='productDesc'>
-                        <p>This is just some random placeholder text for testing the design of the product screen.  This will all be removed once I am able to connect to the api/database and add some data to the database.</p>
-                    </div>
-                    <div class='productPrice'>
-                        R 599.99
-                    </div>                
-                </button>
-                <div class='productItem'>
-                    <div class='productImage'>
-                        <img src='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png' class='productImageDisplay'>
-                    </div>
-                    <div class='productName'>
-                        <h3>Product Name</h3>
-                    </div>
-                    <div class='productBrand'>
-                        <h4>Brand Name</h4>
-                    </div>
-                    <div class='productDesc'>
-                        <p>This is just some random placeholder text for testing the design of the product screen.  This will all be removed once I am able to connect to the api/database and add some data to the database.</p>
-                    </div>
-                    <div class='productPrice'>
-                        R 599.99
-                    </div>                
+            </main>
+            <footer class='footerGrid'>
+                <div id="frmFooter">
+                    <button type="button" id='btnAbout' name='btnAbout' @click="navigateToAbout()" class='btnAbout'>About</button>
+                    <button type="button" id='btnContactUs' name='btnContactUs' @click="navigateToContactUs()" class='btnContactUs'>Contact Us</button>
                 </div>
-                <div class='productItem'>
-                    <div class='productImage'>
-                        <img src='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png' class='productImageDisplay'>
-                    </div>
-                    <div class='productName'>
-                        <h3>Product Name</h3>
-                    </div>
-                    <div class='productBrand'>
-                        <h4>Brand Name</h4>
-                    </div>
-                    <div class='productDesc'>
-                        <p>This is just some random placeholder text for testing the design of the product screen.  This will all be removed once I am able to connect to the api/database and add some data to the database.</p>
-                    </div>
-                    <div class='productPrice'>
-                        R 599.99
-                    </div>                
-                </div>
-                <div class='productItem'>
-                    <div class='productImage'>
-                        <img src='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png' class='productImageDisplay'>
-                    </div>
-                    <div class='productName'>
-                        <h3>Product Name</h3>
-                    </div>
-                    <div class='productBrand'>
-                        <h4>Brand Name</h4>
-                    </div>
-                    <div class='productDesc'>
-                        <p>This is just some random placeholder text for testing the design of the product screen.  This will all be removed once I am able to connect to the api/database and add some data to the database.</p>
-                    </div>
-                    <div class='productPrice'>
-                        R 599.99
-                    </div>                
-                </div>
-                <div class='productItem'>
-                    <div class='productImage'>
-                        <img src='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png' class='productImageDisplay'>
-                    </div>
-                    <div class='productName'>
-                        <h3>Product Name</h3>
-                    </div>
-                    <div class='productBrand'>
-                        <h4>Brand Name</h4>
-                    </div>
-                    <div class='productDesc'>
-                        <p>This is just some random placeholder text for testing the design of the product screen.  This will all be removed once I am able to connect to the api/database and add some data to the database.</p>
-                    </div>
-                    <div class='productPrice'>
-                        R 599.99
-                    </div>                
-                </div>
-                <div class='productItem'>
-                    <div class='productImage'>
-                        <img src='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png' class='productImageDisplay'>
-                    </div>
-                    <div class='productName'>
-                        <h3>Product Name</h3>
-                    </div>
-                    <div class='productBrand'>
-                        <h4>Brand Name</h4>
-                    </div>
-                    <div class='productDesc'>
-                        <p>This is just some random placeholder text for testing the design of the product screen.  This will all be removed once I am able to connect to the api/database and add some data to the database.</p>
-                    </div>
-                    <div class='productPrice'>
-                        R 599.99
-                    </div>                
-                </div>
-                <div class='productItem'>
-                    <div class='productImage'>
-                        <img src='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png' class='productImageDisplay'>
-                    </div>
-                    <div class='productName'>
-                        <h3>Product Name</h3>
-                    </div>
-                    <div class='productBrand'>
-                        <h4>Brand Name</h4>
-                    </div>
-                    <div class='productDesc'>
-                        <p>This is just some random placeholder text for testing the design of the product screen.  This will all be removed once I am able to connect to the api/database and add some data to the database.</p>
-                    </div>
-                    <div class='productPrice'>
-                        R 599.99
-                    </div>                
-                </div>
-            </form>
-            <div class='productHelp'>
-                <div>
-                    <h3>&#128712; NEED ASSISTANCE?</h3>
-                </div>
-                <div class='productHelpDesc'>
-                    <p>Please visit our <a>Help</a> or <a>Contact Us</a> section</p>
-                </div>
-            </div>
-        </main>
-		<footer class='footerGrid'>
-			<div id="frmFooter">
-				<button type="button" id='btnAbout' name='btnAbout' @click="navigateToAbout()" class='btnAbout'>About</button>
-				<button type="button" id='btnContactUs' name='btnContactUs' @click="navigateToContactUs()" class='btnContactUs'>Contact Us</button>
-			</div>
-			<hr>
-			<div class='footerInfo'>
-				&copy; Created by Pepega
-			</div>			
-		</footer>
+                <hr>
+                <div class='footerInfo'>
+                    &copy; Created by Pepega
+                </div>			
+            </footer>
+        </div>
 	</body>
 </html>

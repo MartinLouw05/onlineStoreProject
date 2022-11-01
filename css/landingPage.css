@@ -86,6 +86,10 @@
     background-color: aliceblue;
 }
 
+.dropdown-item {
+    cursor: pointer;
+}
+
 .slideshow {
     grid-area: slideshow;
 }

@@ -1,11 +1,12 @@
 
-let productPage = new Vue ({
+let productInfoPage = new Vue ({
     el : '#app',
     data : {
         categoryList : [],
         numberOfCategories : 0,
         brandList : [],
-        productList : []
+        productItem : [],
+        brandProductItem : []
     },
     methods : {
         //Create Dropdown
@@ -13,10 +14,10 @@ let productPage = new Vue ({
             axios.get('http://localhost/onlineStoreApi/productCategory.php') 
             .then(function (response) {
                 // handle success
-                productPage.categoryList = response.data.category; 
-                productPage.numberOfCategories = productPage.categoryList.length;
-                productPage.getBrands();
-                //productPage.createNavigationBody(); 
+                productInfoPage.categoryList = response.data.category; 
+                productInfoPage.numberOfCategories = productInfoPage.categoryList.length;
+                productInfoPage.getBrands();
+                //productInfoPage.createNavigationBody(); 
             })
             .catch(function (error) {
                 // handle error
@@ -27,7 +28,7 @@ let productPage = new Vue ({
             });           
         },
         getBrands : function() {
-            category = productPage.categoryList;
+            category = productInfoPage.categoryList;
             for (i = 0; i < category.length; i++) {
                 let nextCategory = category[i];
 
@@ -40,7 +41,7 @@ let productPage = new Vue ({
                     let brandAll = { product_brand_name : "All" };
                     response.data.brand.unshift(brandAll);   
                     
-                    productPage.brandList.push(response.data.brand);
+                    productInfoPage.brandList.push(response.data.brand);
                 })
                 .catch(function (error) {
                     // handle error
@@ -52,20 +53,17 @@ let productPage = new Vue ({
             }
         },
         //Get Product Information
-        getProducts : function() {
-            let selectedCategory = sessionStorage.getItem("selectedCategory");            
-            let selectedBrand = sessionStorage.getItem("selectedBrand");            
-
-            let form_data = new FormData();
-            form_data.append("categoryID", selectedCategory);
-            form_data.append("brandName", selectedBrand);
+        getProductInfo : function() {
+            let selectedProduct = sessionStorage.getItem("selectedProduct");  
             
-            axios.post('http://localhost/onlineStoreApi/product.php?crud=searchProduct', form_data) 
+            let form_data = new FormData();
+            form_data.append("productID", selectedProduct);
+            
+            axios.post('http://localhost/onlineStoreApi/product.php?crud=selectProduct', form_data) 
             .then(function (response) {
                 // handle success  
-                console.log(response);
-
-                productPage.productList = response.data.product;
+                productInfoPage.productItem = response.data.product;
+                productInfoPage.getSameBrandProducts(response.data.product[0].product_brand_name);
             })
             .catch(function (error) {
                 // handle error
@@ -75,10 +73,42 @@ let productPage = new Vue ({
                 // always executed
             }); 
         },
-        //User Product Selection
-        selectedProduct : function(product) {
-            sessionStorage.setItem("selectedProduct", product.product_id);
+        //Get Products for Carousel
+        getSameBrandProducts : function(brandName) {
+            let form_data = new FormData();
+            form_data.append("brandName", brandName);
+            
+            axios.post('http://localhost/onlineStoreApi/product.php?crud=getBrandProducts', form_data) 
+            .then(function (response) {
+                // handle success  
+                console.log(response)
+                productInfoPage.brandProductItem = response.data.product;
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+            .finally(function () {
+                // always executed
+            }); 
         },
+        //Add Item to Cart
+        addItemToCart : function(product) {
+            let productID = product.product_id;
+
+            let productObj = {};
+            productObj['productID'] = productID;
+            let productArray = [];
+            productArray.push(productObj);
+            sessionStorage.setItem("userCart", JSON.stringify(productArray));
+/*
+            let jsonCart = { "product_id" : productID };
+            jsonCart = JSON.stringify(jsonCart);
+            let userArray = [];
+            userArray.push(jsonCart);
+            sessionStorage.setItem("userCart", userArray);*/
+        },
+        //User Product Selection
         selectCategory : function(category) {
             sessionStorage.setItem("selectedCategory", category.product_category_id);
             sessionStorage.removeItem("selectedBrand");
@@ -100,9 +130,6 @@ let productPage = new Vue ({
         navigateToProduct : function() {
             window.location.href = '../product/product.html';
         },
-        navigateToSelectedProduct : function() {
-            window.location.href = '../product/productInfo.html';
-        },
         navigateToClient : function() {
             window.location.href = '../client/client.html';
         },        
@@ -115,7 +142,7 @@ let productPage = new Vue ({
     },
     //Run the functions on start
     created : function() {
-        this.getProducts();
+        this.getProductInfo();        
     },
     //Continiously run these functions
     mounted() {

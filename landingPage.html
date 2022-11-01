@@ -45,11 +45,11 @@
                                                                                        
                                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                                 <div v-for="brands in brandList[ categories.product_category_id - 1 ]">
-                                                    <a class="dropdown-item" @click="selectBrand(brands); navigateToProduct();">{{ brands.product_brand_name }}</a>                                                                                                    
+                                                    <a class="dropdown-item" @click="selectBrand(categories, brands); navigateToProduct();">{{ brands.product_brand_name }}</a>                                                                                                    
                                                 </div>                                                                                        
                                             </div>
                                         </li>
-                                    </div>                                				
+                                    </div>
                                 </ul>
                             </div>
                         </nav>
@@ -83,7 +83,7 @@
                     </div> 
                     <div v-for="categories in categoryList">
                         <div class='item'>
-                            <button type="button" :id='categories.product_category_id' v-bind:src="categories.product_category_id" name='btnBats' @click="selectProduct(categories); navigateToProduct();" class='btnBats'>{{ categories.product_category_name }}</button>
+                            <button type="button" :id='categories.product_category_id' v-bind:src="categories.product_category_id" name='btnBats' @click="selectCategory(categories); navigateToProduct();" class='btnBats'>{{ categories.product_category_name }}</button>
                         </div>
                     </div>   
                 </form>
