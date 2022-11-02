@@ -5,9 +5,41 @@ let productPage = new Vue ({
         categoryList : [],
         numberOfCategories : 0,
         brandList : [],
-        productList : []
+        productList : [],
+        userName : "",
+        displayUser : false,
+        displayLogOut : false,
+        displaySignIn : true
     },
     methods : {
+        getActiveUser : function() {
+            let activeUser = sessionStorage.getItem("user");
+
+            if (activeUser) {
+                let form_data = new FormData();
+                form_data.append("user", activeUser);
+
+                axios.post('http://localhost/onlineStoreApi/authentication.php?crud=activeUser', form_data)
+                    .then (function(response) {
+                    
+                    if (response.data.error) {  
+                        // handle error                  
+                        //alert(response.data.message);
+                    }
+                    else {
+                        // handle success
+                        productPage.displaySignIn = false;
+                        productPage.displayLogOut = true;
+                        productPage.displayUser = true;
+                        productPage.userName = response.data.user;
+                        //alert(response.data.message);
+                    }
+                })
+            }
+            else {
+                //Do Nothing
+            }            
+        },
         //Create Dropdown
         getCategories : function() {
             axios.get('http://localhost/onlineStoreApi/productCategory.php') 
@@ -111,10 +143,19 @@ let productPage = new Vue ({
         },
         navigateToContactUs : function() {
             window.location.href = '../company/contactUs.html';
-        } 
+        },
+        //User Log Out
+        userLogOut : function() {
+            sessionStorage.clear();
+            productPage.displaySignIn = true;
+            package.displayLogOut = false;
+            productPage.displayUser = false;
+            window.location.href = '../landingPage.html';
+        }
     },
     //Run the functions on start
     created : function() {
+        this.getActiveUser();
         this.getProducts();
     },
     //Continiously run these functions

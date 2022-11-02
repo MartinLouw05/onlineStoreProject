@@ -24,7 +24,7 @@ let signInPage = new Vue ({
             });       
         },
         attemptLogIn : function() {
-            var userData = signInPage.toFormData(signInPage.newLogIn);
+            let userData = signInPage.toFormData(signInPage.newLogIn);
 
             axios.post('http://localhost/onlineStoreApi/authentication.php?crud=signIn', userData)
             .then (function(response) {

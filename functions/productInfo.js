@@ -6,9 +6,41 @@ let productInfoPage = new Vue ({
         numberOfCategories : 0,
         brandList : [],
         productItem : [],
-        brandProductItem : []
+        brandProductItem : [],
+        userName : "",
+        displayUser : false,
+        displayLogOut : false,
+        displaySignIn : true
     },
     methods : {
+        getActiveUser : function() {
+            let activeUser = sessionStorage.getItem("user");
+
+            if (activeUser) {
+                let form_data = new FormData();
+                form_data.append("user", activeUser);
+
+                axios.post('http://localhost/onlineStoreApi/authentication.php?crud=activeUser', form_data)
+                    .then (function(response) {
+                    
+                    if (response.data.error) {  
+                        // handle error                  
+                        //alert(response.data.message);
+                    }
+                    else {
+                        // handle success
+                        productInfoPage.displaySignIn = false;
+                        productInfoPage.displayLogOut = true;
+                        productInfoPage.displayUser = true;
+                        productInfoPage.userName = response.data.user;
+                        //alert(response.data.message);
+                    }
+                })
+            }
+            else {
+                //Do Nothing
+            }            
+        },
         //Create Dropdown
         getCategories : function() {
             axios.get('http://localhost/onlineStoreApi/productCategory.php') 
@@ -138,10 +170,19 @@ let productInfoPage = new Vue ({
         },
         navigateToContactUs : function() {
             window.location.href = '../company/contactUs.html';
+        },
+        //User Log Out
+        userLogOut : function() {
+            sessionStorage.clear();
+            productInfoPage.displaySignIn = true;
+            productInfoPage.displayLogOut = false;
+            productInfoPage.displayUser = false;
+            window.location.href = '../landingPage.html';
         } 
     },
     //Run the functions on start
     created : function() {
+        this.getActiveUser();
         this.getProductInfo();        
     },
     //Continiously run these functions

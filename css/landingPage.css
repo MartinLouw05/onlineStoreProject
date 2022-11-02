@@ -29,6 +29,11 @@
     padding-top: 7.5px;
 }
 
+.titleButtons > label {
+    margin-left: 10px;
+    margin-right: 15px;
+}
+
 .navigation {
     grid-area: navigation;
 }
@@ -77,6 +82,7 @@
     height: 40px;
     width: 75px;
     margin-left: 10px;
+    margin-right: 10px;
 }
 
 .btnAccInfo {

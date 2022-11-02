@@ -129,26 +129,31 @@ let frmRegistration = new Vue ({
 
             if (userName == "" || userSurname == "" || userDob == "" || userContact == "" || userEmail == "" || userPassword == "" || userRePassword == "") {
                 alert("Please Ensure that All Fields have been Filled");
+                event.preventDefault();
             }
             else if (userContact.length !== 10) {
                 alert("Please Ensure that your Contact Number is 10 characters");
+                event.preventDefault();
             }
             else if (!userEmail.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
                 alert("Please Ensure that your Email Address is in the Correct Format");
+                event.preventDefault();
             }
             else if (userPassword.length < 8) {
                 alert("Please Ensure that your Password is at least 8 characters");
+                event.preventDefault();
             }
             else if (userPassword !== userRePassword) {
                 alert("Please Ensure that the Entered Passwords Match");   
-                window.location.href = 'registerClient.html';             
+                event.preventDefault();             
             }
             else if (userPassword == userRePassword) {
                 this.saveNewUser();
                 event.preventDefault();
             }  
             else {
-                alert("Something Went Wrong While Attempting to Save the User's Information")
+                alert("Something Went Wrong While Attempting to Save the User's Information");
+                event.preventDefault();
             }          
         },
         saveNewUser : function() {
