@@ -110,6 +110,7 @@ let frmRegistration = new Vue ({
     },
     //Functionality
     methods : {
+        //Navigation
         navigateToSignIn : function() {
             window.location.href = 'signIn.html';
         },

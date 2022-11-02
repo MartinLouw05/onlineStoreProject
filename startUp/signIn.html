@@ -10,51 +10,53 @@
         <script src='../functions/signIn.js' defer></script>
 	</head>
 	<body>
-        <form id="frmSignInGrid" class='signInGrid'>
-            <header class='frmSignIn'>
-                <div class='signInHeader'>
-                    <h1 @click="navigateToLandingPage()">Cricket Direct</h1>
-                </div>
-            </header>
-            <main>               
-                <div class='signInMain'>
-                    <div>
-                        <h2>Sign In</h2>
+        <div id="app">
+            <form id="frmSignInGrid" class='signInGrid'>
+                <header class='frmSignIn'>
+                    <div class='signInHeader'>
+                        <h1 @click="navigateToLandingPage()">Cricket Direct</h1>
                     </div>
-                    <div>
-                        <label>Email:</label>
+                </header>
+                <main>               
+                    <div class='signInMain'>
+                        <div>
+                            <h2>Sign In</h2>
+                        </div>
+                        <div>
+                            <label>Email:</label>
+                        </div>
+                        <div>
+                            <input type='email' id='signInEmail' v-model="newLogIn.email" class='form-control'>
+                        </div>
+                        <div>
+                            <label>Password:</label>
+                        </div>
+                        <div>
+                            <input type='password' id='signInPassword' v-model="newLogIn.password" class='form-control'>
+                        </div>
+                        <div>
+                            <button type="button" id='btnSignInSubmit' @click="attemptLogIn();" class='btnSignInSubmit'>Continue</button>
+                        </div>
+                        <div>
+                            <p>
+                                By continuing, you agree to Cricket Direct's <a>Terms and Conditions</a> and <a>Privacy Notice</a>.
+                            </p>
+                        </div>
+                        <div>
+                            <button type="button" id='btnForgotPassword' name='btnForgotPassword' @click="navigateToForgotPassword()" class='btnForgotPassword'> &#10148 Forgot your Password?</button>
+                        </div>
                     </div>
-                    <div>
-                        <input type='email' id='signInEmail' name='signInEmail' class='form-control'>
+                    <div class='registerInfo'>
+                        <label>--- Don't Have An Account? ---</label>
                     </div>
-                    <div>
-                        <label>Password:</label>
-                    </div>
-                    <div>
-                        <input type='password' id='signInPassword' name='signInPassword' class='form-control'>
-                    </div>
-                    <div>
-                        <button id='btnSignInSubmit' name='btnSignInSubmit' class='btnSignInSubmit'>Continue</button>
-                    </div>
-                    <div>
-                        <p>
-                            By continuing, you agree to Cricket Direct's <a>Terms and Conditions</a> and <a>Privacy Notice</a>.
-                        </p>
-                    </div>
-                    <div>
-                        <button type="button" id='btnForgotPassword' name='btnForgotPassword' @click="navigateToForgotPassword()" class='btnForgotPassword'> &#10148 Forgot your Password?</button>
-                    </div>
-                </div>
-                <div class='registerInfo'>
-                    <label>--- Don't Have An Account? ---</label>
-                </div>
-                <div class='signInRegister'>
-                    <button type="button" id='btnSignInCreate' name='btnSignInCreate' @click="navigateToRegistration();" class='btnSignInCreate'>Create a Cricket Direct Account</button>
-                </div>                
-            </main>
-        </form>	
-		<footer class='signInFooter'>
-			&copy; Created by Pepega
-		</footer>
+                    <div class='signInRegister'>
+                        <button type="button" id='btnSignInCreate' name='btnSignInCreate' @click="navigateToRegistration();" class='btnSignInCreate'>Create a Cricket Direct Account</button>
+                    </div>                
+                </main>
+            </form>	
+            <footer class='signInFooter'>
+                &copy; Created by Pepega
+            </footer>
+        </div>
 	</body>
 </html>

@@ -285,7 +285,7 @@
     margin-top: -3px;
 }
 
-.btnSignInSubmit, .btnRegistationSubmit {
+.btnSignInSubmit, .btnRegistationSubmit, .btnForgotPasswordSubmit {
     margin-top: 10px;
     width: 100%;
     height: 35px;
