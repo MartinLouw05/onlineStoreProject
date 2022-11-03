@@ -1,6 +1,8 @@
 let clientInfoPage = new Vue ({
     el : '#app',
     data : {
+        categoryList : [],
+        brandList : [],
         userName : "",
         displayUser : false,
         displayLogOut : false,
@@ -38,6 +40,58 @@ let clientInfoPage = new Vue ({
                 //Do Nothing
             }            
         },
+        getCategories : function() {
+            axios.get('http://localhost/onlineStoreApi/productCategory.php') 
+            .then(function (response) {
+                // handle success
+                clientInfoPage.categoryList = response.data.category; 
+                clientInfoPage.numberOfCategories = clientInfoPage.categoryList.length;
+                clientInfoPage.getBrands();
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+            .finally(function () {
+                // always executed                
+            });
+        },
+        getBrands : async function() {
+            category = clientInfoPage.categoryList;
+            for (i = 0; i < category.length; i++) {
+                let nextCategory = category[i];
+
+                let form_data = new FormData();
+                form_data.append("categoryID", nextCategory.product_category_id);
+                
+                await axios.post('http://localhost/onlineStoreApi/productBrand.php?crud=readByCategory', form_data) 
+                .then(function (response) {
+                    // handle success  
+                    let brandAll = { product_brand_name : "All" };
+                    response.data.brand.unshift(brandAll);
+                    
+                    clientInfoPage.brandList.push(response.data.brand);
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                })
+                .finally(function () {
+                    // always executed
+                });                
+            }
+            //console.log(clientInfoPage.brandList)
+        },
+        //User Product Selection
+        selectCategory : function(category) {
+            sessionStorage.setItem("selectedCategory", category.product_category_id);
+            sessionStorage.removeItem("selectedBrand");
+        },
+        selectBrand : function(category, brand) {
+            sessionStorage.setItem("selectedCategory", category.product_category_id);
+            sessionStorage.setItem("selectedBrand", brand.product_brand_name);
+        },
+        //Get User Info to Fill Form
         getUserInfo : function(userID) {
             let form_data = new FormData();
             form_data.append("user", userID);
@@ -164,6 +218,9 @@ let clientInfoPage = new Vue ({
             clientInfoPage.displayLogOut = false;
             clientInfoPage.displayUser = false;
             window.location.href = '../landingPage.html';
+        },
+        scrollTop : function() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
         }
     },
     //Run the functions on start
@@ -172,6 +229,6 @@ let clientInfoPage = new Vue ({
     },
     //Continiously run these functions
     mounted() {
-        
+        this.getCategories();
     }
 })

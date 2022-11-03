@@ -49,6 +49,20 @@
     color: whitesmoke;
 }
 
+.content {
+    padding: 16px;
+  }
+
+  .sticky {
+    position: fixed;
+    top: 0;
+    width: 100%
+  }
+
+  .sticky + .content {
+    padding-top: 102px;
+  }
+
 .navSearch {
     border: solid;
     border-width: 1px;
@@ -233,12 +247,38 @@
 .footerGrid {
     display: grid;
     grid-template-areas: 
-        'footer';
+        'footerBackToTop'
+        'footerActions'
+        'footerCreatedBy';
     gap: 10px;
     background-color: black;
     padding: 10px;
     color: whitesmoke;
     text-align: center;
+}
+
+.footerBackToTop {
+    cursor: pointer;
+    padding-top: 10px;
+}
+
+.footerBackToTop > h4 {
+    font-size: large;
+}
+
+.footerActions {
+    border: solid;
+    border-width: 0px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-color: whitesmoke;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.footerCreatedBy {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .signInGrid, .registrationGrid {

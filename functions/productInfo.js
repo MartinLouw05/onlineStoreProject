@@ -59,7 +59,7 @@ let productInfoPage = new Vue ({
                 // always executed                
             });           
         },
-        getBrands : function() {
+        getBrands : async function() {
             category = productInfoPage.categoryList;
             for (i = 0; i < category.length; i++) {
                 let nextCategory = category[i];
@@ -67,7 +67,7 @@ let productInfoPage = new Vue ({
                 let form_data = new FormData();
                 form_data.append("categoryID", nextCategory.product_category_id);  
                 
-                axios.post('http://localhost/onlineStoreApi/productBrand.php?crud=readByCategory', form_data) 
+                await axios.post('http://localhost/onlineStoreApi/productBrand.php?crud=readByCategory', form_data) 
                 .then(function (response) {
                     // handle success  
                     let brandAll = { product_brand_name : "All" };
@@ -178,7 +178,10 @@ let productInfoPage = new Vue ({
             productInfoPage.displayLogOut = false;
             productInfoPage.displayUser = false;
             window.location.href = '../landingPage.html';
-        } 
+        },
+        scrollTop : function() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
     },
     //Run the functions on start
     created : function() {

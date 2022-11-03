@@ -11,6 +11,16 @@ let landingPage = new Vue ({
         displaySignIn : true
     },
     methods : {
+        stickyHeader : function() {
+            let header = document.getElementById("frmHeaderGrid");
+            let sticky = header.offsetTop;
+
+            if (window.pageYOffset > sticky) {
+                header.classList.add("sticky");
+              } else {
+                header.classList.remove("sticky");
+              }
+        },
         getActiveUser : function() {
             let activeUser = sessionStorage.getItem("user");
 
@@ -56,19 +66,19 @@ let landingPage = new Vue ({
                 // always executed                
             });
         },
-        getBrands : function() {
+        getBrands : async function() {
             category = landingPage.categoryList;
             for (i = 0; i < category.length; i++) {
                 let nextCategory = category[i];
 
                 let form_data = new FormData();
-                form_data.append("categoryID", nextCategory.product_category_id);  
+                form_data.append("categoryID", nextCategory.product_category_id);
                 
-                axios.post('http://localhost/onlineStoreApi/productBrand.php?crud=readByCategory', form_data) 
+                await axios.post('http://localhost/onlineStoreApi/productBrand.php?crud=readByCategory', form_data) 
                 .then(function (response) {
                     // handle success  
                     let brandAll = { product_brand_name : "All" };
-                    response.data.brand.unshift(brandAll);   
+                    response.data.brand.unshift(brandAll);
                     
                     landingPage.brandList.push(response.data.brand);
                 })
@@ -117,11 +127,15 @@ let landingPage = new Vue ({
             landingPage.displayLogOut = false;
             landingPage.displayUser = false;
             window.location.href = 'landingPage.html';
+        },
+        scrollTop : function() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
         }
     },
     //Run the functions on start
     created : function() {
         this.getActiveUser();
+        //window.addEventListener('scroll', this.stickyHeader);
     },
     //Continiously run these functions
     mounted() {        

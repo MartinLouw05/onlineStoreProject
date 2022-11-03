@@ -43,7 +43,7 @@
     border-radius: 10px;
 }
 
-a {
+h4 > a {
     float: right;
 }
 
@@ -103,6 +103,7 @@ a {
 }
 
 .btnCancelSubmit {
+    cursor: pointer;
     float: right;
     background-color: burlywood;
 }

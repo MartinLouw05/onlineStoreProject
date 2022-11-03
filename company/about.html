@@ -17,7 +17,7 @@
 			<header>
 				<form id="frmHeaderGrid" class='headerGrid'>
 					<div class='title'>
-						<h1 @click="navigateToLandingPage()">CRICKET DIRECT</h1>
+						<h1 @click="navigateToLandingPage()" class='btnCompanyTitle'>CRICKET DIRECT</h1>
 					</div>
 					<div class='titleButtons'>
 						<input type='text' placeholder='Search' class='navSearch'>
@@ -30,16 +30,29 @@
 
 					<div id="headerDropdown" class='navigation'>
 						<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-							<span class="navbar-toggler-icon"></span>
-						</button>
-						<!--<a class="navbar-brand" href="#">Home</a>-->
+							<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+							<!--<a class="navbar-brand" href="#">Home</a>-->
 
-						<div id="navbarToggler" class="collapse navbar-collapse">
-							<ul id="navbarDropdown" class="navbar-nav mr-auto mt-2 mt-lg-0">
-								<!-- Create Dropdown Here -->							
-							</ul>
-						</div>
+							<div id="navbarToggler" class="collapse navbar-collapse">
+                                <ul id="navbarDropdown" class="navbar-nav mr-auto mt-2 mt-lg-0">                                
+                                    <div v-for="categories in categoryList">
+                                        <!-- Create Dropdown Here -->		
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                {{ categories.product_category_name }}
+                                            </a>                                           
+                                                                                       
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                <div v-for="brands in brandList[ categories.product_category_id - 1 ]">
+                                                    <a class="dropdown-item" @click="selectBrand(categories, brands); navigateToProduct();">{{ brands.product_brand_name }}</a>                                                                                                    
+                                                </div>                                                                                        
+                                            </div>
+                                        </li>
+                                    </div>
+                                </ul>
+                            </div>
 						</nav>
 					</div>	
 				</form>
@@ -51,7 +64,7 @@
 						<h3>About Us</h3>
 					</div>
 					<div class='aboutInfo'>
-						<p>Random Company Information</p>
+						<p>{{ companyDesc }}</p>
 					</div>
 					<div class='aboutDevHeader'>
 						<h3>About the Developer</h3>
@@ -60,20 +73,23 @@
 						<img src='../images/M Louw.jpg' alt='Dev Image Not Found' class='devImage'>
 					</div>
 					<div class='aboutDevInfo'>
-						<h4>Martin Louw</h4>
+						<h4>{{ developerName }}</h4>
+						<p>{{ developerDesc }}</p>
 					</div>
 				</div>
 			</div>
 		</main>
-			<footer class='footerGrid'>
-				<form id="frmFooter">
-					<button type="button" id='btnAbout' name='btnAbout' @click="navigateToAbout()" class='btnAbout'>About</button>
-					<button type="button" id='btnContactUs' name='btnContactUs' @click="navigateToContactUs()" class='btnContactUs'>Contact Us</button>
-				</form>
-				<hr>
-				<div class='footerInfo'>
-					&copy; Created by Pepega
-				</div>			
+			<footer class='footerGrid aboutFooter'>
+				<div @click="scrollTop();" class="footerBackToTop">
+                    <h4>&#129045; Back To Top &#129045;</h4>
+                </div>
+                <div class="footerActions">
+                    <button type="button" id='btnAbout' name='btnAbout' @click="navigateToAbout()" class='btnAbout'>About</button>
+                    <button type="button" id='btnContactUs' name='btnContactUs' @click="navigateToContactUs()" class='btnContactUs'>Contact Us</button>
+                </div>
+                <div class='footerCreatedBy'>
+                    &copy; Created by Martin Louw
+                </div>		
 			</footer>
 		</div>
     </body>

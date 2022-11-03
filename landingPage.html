@@ -90,14 +90,16 @@
                 </form>
             </main>
             <footer class='footerGrid'>
-                <form id="frmFooter">
+                <div @click="scrollTop();" class="footerBackToTop">
+                    <h4>&#129045; Back To Top &#129045;</h4>
+                </div>
+                <div class="footerActions">
                     <button type="button" id='btnAbout' name='btnAbout' @click="navigateToAbout()" class='btnAbout'>About</button>
                     <button type="button" id='btnContactUs' name='btnContactUs' @click="navigateToContactUs()" class='btnContactUs'>Contact Us</button>
-                </form>
-                <hr>
-                <div class='footerInfo'>
-                    &copy; Created by Pepega
-                </div>			
+                </div>
+                <div class='footerCreatedBy'>
+                    &copy; Created by Martin Louw
+                </div>
             </footer>
         </div>
 	</body>
