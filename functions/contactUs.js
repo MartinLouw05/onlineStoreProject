@@ -9,7 +9,8 @@ let contactUsPage = new Vue ({
         displayLogOut : false,
         displaySignIn : true,
         capeTownOffice : "2nd Floor, Trevor Building \n45 Rautenbach Road \nBelville \nCape Town \n8010",
-        userQuery : { email : "", description : "" }
+        userQuery : { email : "", description : "" },
+        amountOfItemsInCart : 0
     },
     methods : {
         getActiveUser : function() {
@@ -32,6 +33,7 @@ let contactUsPage = new Vue ({
                         contactUsPage.displayLogOut = true;
                         contactUsPage.displayUser = true;
                         contactUsPage.userName = response.data.user;
+                        contactUsPage.getAmountOfItemInCart(activeUser);
                         //alert(response.data.message);
                     }
                 })
@@ -39,6 +41,23 @@ let contactUsPage = new Vue ({
             else {
                 //Do Nothing
             }            
+        },
+        getAmountOfItemInCart : function(activeUser) {
+            let form_data = new FormData();
+            form_data.append("clientID", activeUser);
+
+            axios.post('http://localhost/onlineStoreApi/cart.php?crud=getClientCart', form_data)
+                .then (function(response) {
+                
+                if (response.data.error) {  
+                    // handle error                                                   
+                    // console.log(response.data.message);
+                }
+                else {
+                    // handle success
+                    contactUsPage.amountOfItemsInCart = response.data.cart.length;
+                }
+            })
         },
         getCategories : function() {
             axios.get('http://localhost/onlineStoreApi/productCategory.php') 

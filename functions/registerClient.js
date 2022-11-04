@@ -1,108 +1,4 @@
-//const { default: axios } = require("axios");
 
-//User Class
-class User {
-    constructor(name, surname, dob, contact, email, password) {
-        this._name = name;
-        this._surname = surname;
-        this._dob = dob;
-        this._contact = contact;
-        this._email = email;
-        this._password = password;
-    }
-
-    get name() {
-        return this._name;
-    }
-    set name(text) {
-        if (typeof text == "string") {
-            this._name = text;
-        }
-        else {
-            //Value is not of type string
-        }
-    }
-
-    get surname() {
-        return this._surname;
-    }
-    set surname(text) {
-        if (typeof text == "string") {
-            this._surname = text;
-        }
-        else {
-            //Value is not of type string
-        }
-    }
-
-    get dob() {
-        return this._dob;
-    }
-    set dob(text) {
-        if (typeof text == "string") {
-            this._dob = text;
-        }
-        else {
-            //Value is not of type string
-        }
-    }
-
-    get contact() {
-        return this._contact;
-    }
-    set contact(text) {
-        if (isNaN(text)) {
-            //Value is not of type number
-        }
-        else {      
-            this._contact = text;
-        }
-    }
-
-    get email() {
-        return this._email;
-    }
-    set email(text) {
-        if (typeof text == "string") {
-            this._email = text;
-        }
-        else {
-            //Value is not of type string
-        }
-    }
-
-    get password() {
-        return this._password;
-    }
-    set password(text) {
-        if (typeof text == "string") {
-            this._password = text;
-        }
-        else {
-            //Value is not of type string
-        }
-    }
-
-    //Create New User
-    createNewUser(data) {
-        /*axios.post('http://localhost:3000/users', {
-                name : data.name,
-                surname : data.surname,
-                dateOfBirth : data.dob,
-                contact : data.contact,
-                email : data.email,
-                password : data.password
-            })
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });*/
-    }
-}
-
-//Create New User
 let frmRegistration = new Vue ({
     el : '#frmRegistration',
     data : {
@@ -169,6 +65,7 @@ let frmRegistration = new Vue ({
                 }
                 else {
                     alert(response.data.message);
+                    window.location.href = "signIn.html";
                 }
             });
         },
@@ -193,9 +90,7 @@ let frmRegistration = new Vue ({
     }
 })
 
-//import axios from 'axios';
-//const axios = require('axios').default;
-
+/*
 //Navigation Variables
 let btnBats = document.getElementById('btnBats');
 let btnSignIn = document.getElementById('btnSignIn');
@@ -227,3 +122,4 @@ function test1() {
         console.log(error);
       });
     }
+*/

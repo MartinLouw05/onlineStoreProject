@@ -9,7 +9,8 @@ let productPage = new Vue ({
         userName : "",
         displayUser : false,
         displayLogOut : false,
-        displaySignIn : true
+        displaySignIn : true,
+        amountOfItemsInCart : 0
     },
     methods : {
         getActiveUser : function() {
@@ -32,6 +33,7 @@ let productPage = new Vue ({
                         productPage.displayLogOut = true;
                         productPage.displayUser = true;
                         productPage.userName = response.data.user;
+                        productPage.getAmountOfItemInCart(activeUser);
                         //alert(response.data.message);
                     }
                 })
@@ -40,15 +42,31 @@ let productPage = new Vue ({
                 //Do Nothing
             }            
         },
+        getAmountOfItemInCart : function(activeUser) {
+            let form_data = new FormData();
+            form_data.append("clientID", activeUser);
+
+            axios.post('http://localhost/onlineStoreApi/cart.php?crud=getClientCart', form_data)
+                .then (function(response) {
+                
+                if (response.data.error) {  
+                    // handle error                                                   
+                    // console.log(response.data.message);
+                }
+                else {
+                    // handle success
+                    productPage.amountOfItemsInCart = response.data.cart.length;
+                }
+            })
+        },
         //Create Dropdown
         getCategories : function() {
             axios.get('http://localhost/onlineStoreApi/productCategory.php') 
             .then(function (response) {
                 // handle success
-                productPage.categoryList = response.data.category; 
+                productPage.categoryList = response.data.category;
                 productPage.numberOfCategories = productPage.categoryList.length;
-                productPage.getBrands();
-                //productPage.createNavigationBody(); 
+                productPage.getBrands(); 
             })
             .catch(function (error) {
                 // handle error

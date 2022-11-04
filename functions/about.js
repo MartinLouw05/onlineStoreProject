@@ -8,6 +8,7 @@ let aboutPage = new Vue ({
         displayUser : false,
         displayLogOut : false,
         displaySignIn : true,
+        amountOfItemsInCart : 0,
         developerName : "Martin Louw",
         developerDesc : "Bachelor of Commerce - Informatics - Information Sciences \nStudied at the University of Pretoria \n\nI finished my matric in 2013 at Centurion High School, after which I was accepted in 2014 at the University of Pretoria to study towards a Bachelor of Commerce: Financial Science.  At the end of my second year, I realized that my passion was not Accounting.  I changed my study field to Bachelor of Commerce: Informatics.  I took a gap year in 2019 to become a better and more engaged student and obtained my Bachelor of Commerce: Informatics qualification in November 2020, the graduation ceremony took place in May 2021. \nI am able to work independently, or as part of a team.  I am a hard worker and take responsibility for the tasks assigned to me.",
         companyDesc : "Welcome to Cricket Direct. \nHere we attempt to provide players with the best equipment found on the market today. \nWe are passionate about the sport and will do our best to provide players with support on any queries or uncertainties that they might experience.\n \nThis website is created as a project and is not an actual company.  This project has no affiliation with any other companies of the similar design or naming."
@@ -33,6 +34,7 @@ let aboutPage = new Vue ({
                         aboutPage.displayLogOut = true;
                         aboutPage.displayUser = true;
                         aboutPage.userName = response.data.user;
+                        aboutPage.getAmountOfItemInCart(activeUser);
                         //alert(response.data.message);
                     }
                 })
@@ -40,6 +42,23 @@ let aboutPage = new Vue ({
             else {
                 //Do Nothing
             }            
+        },
+        getAmountOfItemInCart : function(activeUser) {
+            let form_data = new FormData();
+            form_data.append("clientID", activeUser);
+
+            axios.post('http://localhost/onlineStoreApi/cart.php?crud=getClientCart', form_data)
+                .then (function(response) {
+                
+                if (response.data.error) {  
+                    // handle error                                                   
+                    // console.log(response.data.message);
+                }
+                else {
+                    // handle success
+                    aboutPage.amountOfItemsInCart = response.data.cart.length;
+                }
+            })
         },
         getCategories : function() {
             axios.get('http://localhost/onlineStoreApi/productCategory.php') 

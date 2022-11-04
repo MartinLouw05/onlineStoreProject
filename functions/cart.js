@@ -9,7 +9,10 @@ let cartPage = new Vue ({
         userName : "",
         displayUser : false,
         displayLogOut : false,
-        displaySignIn : true
+        displaySignIn : true,
+        cartTotal : 0,
+        amountOfItemsInCart : 0,
+        items : true
     },
     methods : {
         getActiveUser : function() {
@@ -21,10 +24,9 @@ let cartPage = new Vue ({
 
                 axios.post('http://localhost/onlineStoreApi/authentication.php?crud=activeUser', form_data)
                     .then (function(response) {
-                    console.log(response.data.user);
                     
                     if (response.data.error) {  
-                        // handle error                  
+                        // handle error                                    
                         //alert(response.data.message);
                     }
                     else {
@@ -33,13 +35,54 @@ let cartPage = new Vue ({
                         cartPage.displayLogOut = true;
                         cartPage.displayUser = true;
                         cartPage.userName = response.data.user;
+                        cartPage.getAmountOfItemInCart(activeUser);
+                        cartPage.getActiveUserCart(activeUser);
                         //alert(response.data.message);
                     }
                 })
             }
             else {
-                //Do Nothing
+                this.items = false;
             }            
+        },
+        getAmountOfItemInCart : function(activeUser) {
+            let form_data = new FormData();
+            form_data.append("clientID", activeUser);
+
+            axios.post('http://localhost/onlineStoreApi/cart.php?crud=getClientCart', form_data)
+                .then (function(response) {
+                
+                if (response.data.error) {  
+                    // handle error                                                   
+                    // console.log(response.data.message);
+                }
+                else {
+                    // handle success
+                    cartPage.amountOfItemsInCart = response.data.cart.length;
+                }
+            })
+        },
+        //Get Active User Cart
+        getActiveUserCart : function(activeUser) {
+            let form_data = new FormData();
+            form_data.append("clientID", activeUser);
+
+            axios.post('http://localhost/onlineStoreApi/cart.php?crud=getClientCart', form_data)
+                .then (function(response) {
+                
+                if (response.data.error) {  
+                    // handle error                                                   
+                    // console.log(response.data.message);
+                }
+                else {
+                    // handle success
+                    cartPage.cartItem = response.data.cart;
+
+                    for (i = 0; i < response.data.cart.length; i++) {
+                        cartPage.cartTotal = parseInt(cartPage.cartTotal) + (parseInt(response.data.cart[i].product_price) * parseInt(response.data.cart[i].client_cart_quantity));
+                    }
+                }
+            })
         },
         //Create Dropdown
         getCategories : function() {
@@ -84,36 +127,27 @@ let cartPage = new Vue ({
                 });                
             }
         },
-        //Get Product Information
-        getProductInfo : function() {
-            let selectedProduct = JSON.parse(sessionStorage.getItem("userCart"));  
-
-            if (selectedProduct) {
-                console.log(selectedProduct);
-            
-                let form_data = new FormData();
-                form_data.append("productID", selectedProduct[0].productID);
-                
-                axios.post('http://localhost/onlineStoreApi/product.php?crud=selectProduct', form_data) 
-                .then(function (response) {
-                    // handle success  
-                    cartPage.cartItem = response.data.product;
-                })
-                .catch(function (error) {
-                    // handle error
-                    console.log(error);
-                })
-                .finally(function () {
-                    // always executed
-                }); 
-            }
-            else {
-                //Do Nothing
-            }
-        },
         //Remove Item from Cart
         removeFromCart : function(product) {
-            console.log(product)
+            let clientID = sessionStorage.getItem("user");
+            
+            let form_data = new FormData();
+            form_data.append("clientID", clientID);
+            form_data.append("productID", product.product_id);
+
+            axios.post('http://localhost/onlineStoreApi/cart.php?crud=delete', form_data)
+            .then (function(response) {
+            
+            if (response.data.error) {  
+                // handle error                                    
+                alert(response.data.message);
+            }
+            else {
+                // handle success
+                alert(response.data.message);
+                window.location.href = 'cart.html';
+            }
+        })
         },
         //User Search
         performSearch : function() {
@@ -177,8 +211,7 @@ let cartPage = new Vue ({
     },
     //Run the functions on start
     created : function() {
-        this.getActiveUser();
-        this.getProductInfo();        
+        this.getActiveUser();     
     },
     //Continiously run these functions
     mounted() {

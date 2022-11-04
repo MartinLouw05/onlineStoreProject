@@ -9,8 +9,7 @@
 		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">	
-		<script src='./functions/landingPage.js' defer></script>
-		
+		<script src='./functions/landingPage.js' defer></script>	
 	</head>
 	<body class='home'>
         <div id="app">
@@ -24,7 +23,7 @@
                         <button type="button" @click="performSearch();" class='navSearchBtn'>&#128269</button>
                         <button type="button" id='btnAccInfo' name='btnAccInfo' v-if="displayUser" @click="navigateToClient()" class='btnAccInfo'>&#128100</button><label>{{ userName }}</label>
                         <button type="button" id='btnSignIn' name='btnSignIn' v-if="displaySignIn" @click="navigateToSignIn()" class='navBtn'>Sign In</button>
-                        <button type="button" id='btnCart' name='btnCart' @click="navigateToCart()" class='navBtn'>&#128722</button>
+                        <button type="button" id='btnCart' name='btnCart' @click="navigateToCart()" class='navBtn'>&#128722 ({{ amountOfItemsInCart }})</button>
                         <button type="button" id='btnSignIn' name='btnSignIn' v-if="displayLogOut" @click="userLogOut()" class='navBtn'>Log Out</button>					
                     </div>
 

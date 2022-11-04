@@ -24,7 +24,7 @@
                         <button type="button" @click="performSearch();" class='navSearchBtn'>&#128269</button>
 						<button type="button" id='btnAccInfo' name='btnAccInfo' v-if="displayUser" @click="navigateToClient()" class='btnAccInfo'>&#128100</button><label>{{ userName }}</label>
 						<button type="button" id='btnSignIn' name='btnSignIn' v-if="displaySignIn" @click="navigateToSignIn()" class='navBtn'>Sign In</button>
-						<button type="button" id='btnCart' name='btnCart' @click="navigateToCart()" class='navBtn'>&#128722</button>
+						<button type="button" id='btnCart' name='btnCart' @click="navigateToCart()" class='navBtn'>&#128722 ({{ amountOfItemsInCart }})</button>
 						<button type="button" id='btnSignIn' name='btnSignIn' v-if="displayLogOut" @click="userLogOut()" class='navBtn'>Log Out</button>						
 					</div>
 

@@ -7,7 +7,8 @@ let clientPage = new Vue ({
         userName : "",
         displayUser : false,
         displayLogOut : false,
-        displaySignIn : true
+        displaySignIn : true,
+        amountOfItemsInCart : 0
     },
     methods : {
         getActiveUser : function() {
@@ -30,6 +31,7 @@ let clientPage = new Vue ({
                         clientPage.displayLogOut = true;
                         clientPage.displayUser = true;
                         clientPage.userName = response.data.user;
+                        clientPage.getAmountOfItemInCart(activeUser);
                         //alert(response.data.message);
                     }
                 })
@@ -37,6 +39,23 @@ let clientPage = new Vue ({
             else {
                 //Do Nothing
             }            
+        },
+        getAmountOfItemInCart : function(activeUser) {
+            let form_data = new FormData();
+            form_data.append("clientID", activeUser);
+
+            axios.post('http://localhost/onlineStoreApi/cart.php?crud=getClientCart', form_data)
+                .then (function(response) {
+                
+                if (response.data.error) {  
+                    // handle error                                                   
+                    // console.log(response.data.message);
+                }
+                else {
+                    // handle success
+                    clientPage.amountOfItemsInCart = response.data.cart.length;
+                }
+            })
         },
         getCategories : function() {
             axios.get('http://localhost/onlineStoreApi/productCategory.php') 

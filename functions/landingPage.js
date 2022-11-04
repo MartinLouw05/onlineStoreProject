@@ -8,7 +8,8 @@ let landingPage = new Vue ({
         userName : "",
         displayUser : false,
         displayLogOut : false,
-        displaySignIn : true
+        displaySignIn : true,
+        amountOfItemsInCart : 0
     },
     methods : {
         stickyHeader : function() {
@@ -41,6 +42,7 @@ let landingPage = new Vue ({
                         landingPage.displayLogOut = true;
                         landingPage.displayUser = true;
                         landingPage.userName = response.data.user;
+                        landingPage.getAmountOfItemInCart(activeUser);
                         //alert(response.data.message);
                     }
                 })
@@ -48,6 +50,23 @@ let landingPage = new Vue ({
             else {
                 //Do Nothing
             }            
+        },
+        getAmountOfItemInCart : function(activeUser) {
+            let form_data = new FormData();
+            form_data.append("clientID", activeUser);
+
+            axios.post('http://localhost/onlineStoreApi/cart.php?crud=getClientCart', form_data)
+                .then (function(response) {
+                
+                if (response.data.error) {  
+                    // handle error                                                   
+                    // console.log(response.data.message);
+                }
+                else {
+                    // handle success
+                    landingPage.amountOfItemsInCart = response.data.cart.length;
+                }
+            })
         },
         getCategories : function() {
             axios.get('http://localhost/onlineStoreApi/productCategory.php') 

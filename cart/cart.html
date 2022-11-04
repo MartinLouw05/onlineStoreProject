@@ -24,7 +24,7 @@
                         <button type="button" @click="performSearch();" class='navSearchBtn'>&#128269</button>
                         <button type="button" id='btnAccInfo' name='btnAccInfo' v-if="displayUser" @click="navigateToClient()" class='btnAccInfo'>&#128100</button><label>{{ userName }}</label>
                         <button type="button" id='btnSignIn' name='btnSignIn' v-if="displaySignIn" @click="navigateToSignIn()" class='navBtn'>Sign In</button>
-                        <button type="button" id='btnCart' name='btnCart' @click="navigateToCart()" class='navBtn'>&#128722</button>
+                        <button type="button" id='btnCart' name='btnCart' @click="navigateToCart()" class='navBtn'>&#128722 ({{ amountOfItemsInCart }})</button>
                         <button type="button" id='btnSignIn' name='btnSignIn' v-if="displayLogOut" @click="userLogOut()" class='navBtn'>Log Out</button>						
                     </div>
 
@@ -66,39 +66,46 @@
                         <div class='cartTitlePrice'>
                             <h3>Price</h3>
                         </div>
-
-                        <div v-for="product in cartItem" class='cartGrid'>
-                            <div class='cartImage'>
-                                <img src='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png' class='productImage'>
-                            </div>
-                            <div class='cartDesc'>
-                                <div><h4>{{ product.product_name }}</h4></div>
-                                <div>Available Stock: {{ product.product_quantity }}</div>
-                                <div>
-                                    <select title='Quantity'>
-                                        <option value='1' selected>1</option>
-                                        <option value='2'>2</option>
-                                        <option value='3'>3</option>
-                                        <option value='4'>4</option>
-                                        <option value='5'>5</option>
-                                    </select>
+                        <div v-if="items">
+                            <div v-for="product in cartItem" class='cartGrid'>
+                                <div class="cartItem">
+                                    <div class='cartImage'>
+                                        <img src='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png' alt="Image Not Found" class='productImage'>
+                                    </div>
+                                    <div class='cartDesc'>
+                                        <div><h4>{{ product.product_name }}</h4></div>
+                                        <div>Available Stock: {{ product.product_quantity }}</div>
+                                        <div>Quantity:</div>
+                                        <div><input type="number" :value="product.client_cart_quantity" class="quantity"></div>
+                                        <div class='purchaseInfo'>&#128712 Purchase limit of 5 per customer.</div>
+                                    </div>
+                                    <div class='cartPrice'>
+                                        <div>R {{ product.product_price }}</div>
+                                        <div>
+                                            <button type="button" @click="removeFromCart(product);" class='btnRemoveProduct'>&#128465</button>
+                                        </div> 
+                                        <div class='removeInfo'>Remove</div>                  
+                                    </div>
                                 </div>
-                                <div class='purchaseInfo'>&#128712 Purchase limit of 5 per customer.</div>
                             </div>
-                            <div class='cartPrice'>
-                                <div>R {{ product.product_price }}</div>
+                            <div class='cartTotal'>
+                                <div>Subtotal: R {{ cartTotal }}</div>
                                 <div>
-                                    <button type="button" @click="removeFromCart(product);" class='btnRemoveProduct'>&#128465</button>
-                                </div> 
-                                <div class='removeInfo'>Remove</div>                  
+                                    <button id='btnCheckout' name='btnCheckout' class='btnCheckout'>Proceed to Checkout</button>
+                                </div>                
                             </div>
                         </div>
-                        <div class='cartTotal'>
-                            <div>Subtotal: R14.99</div>
-                            <div>
-                                <button id='btnCheckout' name='btnCheckout' class='btnCheckout'>Proceed to Checkout</button>
-                            </div>                
+                        <div v-if="!items">
+                            <div class="cartGrid"></div>
+                            <div class="cartItem"></div>
+                            <div class='cartImage'></div>
+                            <div class='cartDesc'>
+                                <div class="emptyCartDesc"><h4>The Cart is Empty</h4></div>
+                                <div class="emptyCartDesc"><img src="../images/brokenwicket.jpg" alt="Image Not Found" class="emptyCart"></div>
+                            </div>
+                            <div class='cartTotal'></div>
                         </div>
+                        
                     </div>    
                     
                     <div class='shoppingDisclaimer'>

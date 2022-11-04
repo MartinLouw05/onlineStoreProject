@@ -10,7 +10,8 @@ let productInfoPage = new Vue ({
         userName : "",
         displayUser : false,
         displayLogOut : false,
-        displaySignIn : true
+        displaySignIn : true,
+        amountOfItemsInCart : 0
     },
     methods : {
         getActiveUser : function() {
@@ -33,6 +34,7 @@ let productInfoPage = new Vue ({
                         productInfoPage.displayLogOut = true;
                         productInfoPage.displayUser = true;
                         productInfoPage.userName = response.data.user;
+                        productInfoPage.getAmountOfItemInCart(activeUser);
                         //alert(response.data.message);
                     }
                 })
@@ -40,6 +42,23 @@ let productInfoPage = new Vue ({
             else {
                 //Do Nothing
             }            
+        },
+        getAmountOfItemInCart : function(activeUser) {
+            let form_data = new FormData();
+            form_data.append("clientID", activeUser);
+
+            axios.post('http://localhost/onlineStoreApi/cart.php?crud=getClientCart', form_data)
+                .then (function(response) {
+                
+                if (response.data.error) {  
+                    // handle error                                                   
+                    // console.log(response.data.message);
+                }
+                else {
+                    // handle success
+                    productInfoPage.amountOfItemsInCart = response.data.cart.length;
+                }
+            })
         },
         //Create Dropdown
         getCategories : function() {
@@ -126,19 +145,35 @@ let productInfoPage = new Vue ({
         },
         //Add Item to Cart
         addItemToCart : function(product) {
-            let productID = product.product_id;
+            let activeUser = sessionStorage.getItem("user");
 
-            let productObj = {};
-            productObj['productID'] = productID;
-            let productArray = [];
-            productArray.push(productObj);
-            sessionStorage.setItem("userCart", JSON.stringify(productArray));
-/*
-            let jsonCart = { "product_id" : productID };
-            jsonCart = JSON.stringify(jsonCart);
-            let userArray = [];
-            userArray.push(jsonCart);
-            sessionStorage.setItem("userCart", userArray);*/
+            if (activeUser) {
+                this.addItemToCartActiveUser(activeUser, product);
+            }
+            else {
+                this.navigateToSignIn();
+            }
+        },
+        addItemToCartActiveUser : function(user, product) {
+            let userID = user;
+            
+            let form_data = new FormData();
+            form_data.append("clientID", userID);
+            form_data.append("productID", product.product_id);
+            form_data.append("quantity", 1);
+
+            axios.post('http://localhost/onlineStoreApi/cart.php?crud=addToCart', form_data)
+            .then (function(response) {
+                console.log(response);
+
+                if (response.data.error) {
+                    console.log(response.data.message);
+                }
+                else {
+                    console.log(response.data.message);
+                    productInfoPage.navigateToCart();
+                }
+            });
         },
         //User Search
         performSearch : function() {

@@ -18,8 +18,7 @@
 .cartGrid {
     display: grid;
     grid-template-areas: 
-        'cartImage cartDesc cartDesc cartPrice';
-    grid-template-columns: 15%, 50%, 15%;
+        'cartItem';
     gap: 10px;
     padding: 10px;
     margin: 0.5%;
@@ -29,9 +28,25 @@
     text-align: center;
 }
 
+.cartItem {
+    display: grid;
+    grid-template-areas: 
+        'cartImage cartDesc cartDesc cartPrice';
+    grid-template-columns: 350px 1fr 1fr 100px;
+    gap: 10px;
+    padding-top: 10px;
+    padding-right: 10px;
+    border: solid;
+    border-width: 0px;
+    border-top-width: 1px;
+    border-color: whitesmoke;
+    text-align: center;
+}
+
 .cartTitle {
     text-align: left;
     margin-bottom: 10px;
+    padding-left: 20px;
 }
 
 .cartTitlePrice {
@@ -83,7 +98,7 @@
     margin-top: 2px;
 }
 
-select {
+.quantity {
     width: 75px;
     border: solid;
     border-width: 1px;
@@ -128,3 +143,15 @@ select {
     font-size: small;
 }
 
+.emptyCartDesc {
+    text-align: center;
+}
+
+.emptyCart {
+    width: 50%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: solid;
+    border-width: 0px;
+    border-radius: 50%;
+}
