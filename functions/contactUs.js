@@ -82,15 +82,33 @@ let contactUsPage = new Vue ({
             }
             //console.log(contactUsPage.brandList)
         },
+        //User Search
+        performSearch : function() {
+            let search = document.getElementById("searchItem").value;
+
+            if (search) {
+                sessionStorage.setItem("search", search);
+                sessionStorage.removeItem("selectedBrand");
+                sessionStorage.removeItem("selectedCategory");
+
+                this.navigateToProduct();
+            }
+            else {
+                alert("Search Field is Empty.  Please Try Again");
+            }           
+        },
         //User Product Selection
         selectCategory : function(category) {
             sessionStorage.setItem("selectedCategory", category.product_category_id);
             sessionStorage.removeItem("selectedBrand");
+            sessionStorage.removeItem("search");
         },
         selectBrand : function(category, brand) {
             sessionStorage.setItem("selectedCategory", category.product_category_id);
             sessionStorage.setItem("selectedBrand", brand.product_brand_name);
+            sessionStorage.removeItem("search");
         },
+        //User Query
         createQuery : function() {
             let userEmail = document.getElementById("userEmail").value;
             let userDesc = document.getElementById("userDesc").value;
@@ -132,6 +150,7 @@ let contactUsPage = new Vue ({
             }
             return form_data;          
         },
+        //Navigation
         navigateToLandingPage : function() {
             window.location.href = '../landingPage.html';
         },

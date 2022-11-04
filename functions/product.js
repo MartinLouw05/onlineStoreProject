@@ -85,6 +85,7 @@ let productPage = new Vue ({
         },
         //Get Product Information
         getProducts : function() {
+            let search = sessionStorage.getItem("search");
             let selectedCategory = sessionStorage.getItem("selectedCategory");            
             let selectedBrand = sessionStorage.getItem("selectedBrand");            
 
@@ -93,10 +94,17 @@ let productPage = new Vue ({
             if (selectedBrand == "All") {
                 form_data.append("categoryID", selectedCategory);
                 form_data.append("brandName", "null");
+                form_data.append("search", "null");
+            }
+            else if (search) {
+                form_data.append("categoryID", "null");
+                form_data.append("brandName", "null");
+                form_data.append("search", search);
             }
             else {
                 form_data.append("categoryID", selectedCategory);
                 form_data.append("brandName", selectedBrand);
+                form_data.append("search", "null");
             }
             
             axios.post('http://localhost/onlineStoreApi/product.php?crud=searchProduct', form_data) 
@@ -114,6 +122,21 @@ let productPage = new Vue ({
                 // always executed
             }); 
         },
+        //User Search
+        performSearch : function() {
+            let search = document.getElementById("searchItem").value;
+
+            if (search) {
+                sessionStorage.setItem("search", search);
+                sessionStorage.removeItem("selectedBrand");
+                sessionStorage.removeItem("selectedCategory");
+
+                this.navigateToProduct();
+            }
+            else {
+                alert("Search Field is Empty.  Please Try Again");
+            }           
+        },
         //User Product Selection
         selectedProduct : function(product) {
             sessionStorage.setItem("selectedProduct", product.product_id);
@@ -121,10 +144,12 @@ let productPage = new Vue ({
         selectCategory : function(category) {
             sessionStorage.setItem("selectedCategory", category.product_category_id);
             sessionStorage.removeItem("selectedBrand");
+            sessionStorage.removeItem("search");
         },
         selectBrand : function(category, brand) {
             sessionStorage.setItem("selectedCategory", category.product_category_id);
             sessionStorage.setItem("selectedBrand", brand.product_brand_name);
+            sessionStorage.removeItem("search");
         },
         //Navigation
         navigateToLandingPage : function() {
