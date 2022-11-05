@@ -1,6 +1,5 @@
 
-.home {
-    
+.home {    
     background-size: cover; 
     background-position: center;   
     background-repeat: no-repeat;
@@ -8,6 +7,7 @@
 
 .title {
     grid-area: title;
+    text-align: center;
 }
 
 .btnCompanyTitle {
@@ -21,6 +21,13 @@
 
 .title > h1 {
     cursor: pointer;
+}
+
+.titleSearch {
+    grid-area: titleSearch;
+    text-align: right;
+    padding-top: 7.5px;
+    padding-right: 0;
 }
 
 .titleButtons {
@@ -38,30 +45,19 @@
     grid-area: navigation;
 }
 
-.headerGrid {
-    display: grid;
-    grid-template-areas: 
-        'title titleButtons' 
-        'navigation navigation';
-    gap: 10px;
-    background-color: black;
-    padding: 10px;
-    color: whitesmoke;
-}
-
 .content {
     padding: 16px;
-  }
+}
 
-  .sticky {
+.sticky {
     position: fixed;
     top: 0;
     width: 100%
-  }
+}
 
-  .sticky + .content {
+.sticky + .content {
     padding-top: 102px;
-  }
+}
 
 .navSearch {
     border: solid;
@@ -119,25 +115,6 @@
     grid-area: headerTitle;
 }
 
-.mainGrid {
-    display: grid;
-    grid-template-areas: 
-        'slideshow slideshow slideshow slideshow'
-        'headerTitle headerTitle headerTitle headerTitle'
-        'item item item item';
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    background-color: rgba(0,0,0,.3);
-    padding: 10px;
-    margin: 0.5%;
-    margin-left: 10%;
-    margin-right: 10%;
-    border: solid;
-    border-radius: 5px;
-    border-width: 0px;
-    text-align: center;
-}
-
 .slideshow {
     height: 400px;
 }
@@ -183,16 +160,6 @@
     background-size: contain;
 }
 
-.categoryName {
-    color: whitesmoke;
-    font-size: x-large;
-    font-weight: bold;
-    margin-top: -55px;
-    text-align: left;
-    padding-left: 35px;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-}
-
 .footerGrid {
     display: grid;
     grid-template-areas: 
@@ -230,31 +197,9 @@
     padding-bottom: 10px;
 }
 
-.signInGrid, .registrationGrid {
-    display: grid;
-    grid-template-areas: 
-        'signInHeader'
-        'signInMain'
-        'signInRegister';
-    gap: 10px;
-    background-color: rgba(0,0,0,.2);
-    padding: 10px;
-    padding-bottom: 5px;
-    color: whitesmoke;
-    text-align: center;
-    margin-top: 1%;
-    margin-bottom: 1%;
-    margin-left: 33.3%;
-    margin-right: 33.3%;
-    width: 33.3%;
-    border: solid;
-    border-width: 0px;
-    border-radius: 10px;
-}
-
 .signInHeader, .registrationHeader {
     cursor: pointer;
-    background-image: url('https://media.istockphoto.com/photos/side-view-of-striped-green-grass-soccer-field-picture-id1414353328?k=20&m=1414353328&s=612x612&w=0&h=Z_ZI5yLsiQf4RLr2pnNT5Xh88KkumdQ28gfODqpS1dg=');
+    background-image: url('../images/startUp.jpg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -390,4 +335,400 @@ hr {
     padding-bottom: 10px;
 }
 
+/* --Header Media Queries */
+@media only screen and (max-width: 600px) { 
+    .headerGrid {
+        display: grid;
+        grid-template-areas: 
+            'title'
+            'titleButtons'
+            'titleSearch'
+            'navigation';
+        gap: 10px;
+        background-color: black;
+        padding: 10px;
+        color: whitesmoke;
+    }
+    
+    .title {
+        padding-top: 5%;
+    }
+}
 
+@media only screen and (min-width: 600px) {
+    .headerGrid {
+        display: grid;
+        grid-template-areas: 
+            'title'
+            'titleButtons'
+            'titleSearch'
+            'navigation';
+        gap: 10px;
+        background-color: black;
+        padding: 10px;
+        color: whitesmoke;
+    }
+
+    .title {
+        padding-top: 5%;
+    }
+}
+
+@media only screen and (min-width: 768px) { 
+    .headerGrid {
+        display: grid;
+        grid-template-areas: 
+            'title titleButtons'
+            'title titleSearch'
+            'navigation navigation';
+        gap: 10px;
+        background-color: black;
+        padding: 10px;
+        color: whitesmoke;
+    }
+}
+
+@media only screen and (min-width: 992px) { 
+    .headerGrid {
+        display: grid;
+        grid-template-areas: 
+            'title titleButtons'
+            'title titleSearch'
+            'navigation navigation';
+        gap: 10px;
+        background-color: black;
+        padding: 10px;
+        color: whitesmoke;
+    }
+}
+
+@media only screen and (min-width: 1200px) { 
+    .headerGrid {
+        display: grid;
+        grid-template-areas: 
+            'title titleButtons'
+            'title titleSearch'
+            'navigation navigation';
+        gap: 10px;
+        background-color: black;
+        padding: 10px;
+        color: whitesmoke;
+    }
+}
+
+@media only screen and (min-width: 1315px) { 
+    .headerGrid {
+        display: grid;
+        grid-template-areas: 
+            'title titleSearch titleButtons' 
+            'navigation navigation navigation';
+        grid-template-columns: 400px 1fr 350px;
+        gap: 10px;
+        background-color: black;
+        padding: 10px;
+        color: whitesmoke;
+    }
+
+    .title {
+        padding-top: 0;
+    }
+}
+
+/* --Main Area Media Queries-- */
+@media only screen and (max-width: 600px) { 
+    .mainGrid {
+        display: grid;
+        grid-template-areas: 
+            'slideshow slideshow slideshow slideshow'
+            'headerTitle headerTitle headerTitle headerTitle'
+            'item item item item';
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        background-color: rgba(0,0,0,.3);
+        padding: 10px;
+        margin: 0.5%;
+        margin-left: 10%;
+        margin-right: 10%;
+        border: solid;
+        border-radius: 5px;
+        border-width: 0px;
+        text-align: center;
+    }
+}
+
+@media only screen and (min-width: 600px) { 
+    .mainGrid {
+        display: grid;
+        grid-template-areas: 
+            'slideshow slideshow'
+            'headerTitle headerTitle'
+            'item item';
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        background-color: rgba(0,0,0,.3);
+        padding: 10px;
+        margin: 0.5%;
+        margin-left: 0.5%;
+        margin-right: 0.5%;
+        border: solid;
+        border-radius: 5px;
+        border-width: 0px;
+        text-align: center;
+    }
+
+    .categoryName {
+        color: whitesmoke;
+        font-size: x-large;
+        font-weight: bold;
+        margin-top: -55px;
+        text-align: left;
+        padding-left: 30px;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    }
+}
+
+@media only screen and (min-width: 768px) { 
+    .mainGrid {
+        display: grid;
+        grid-template-areas: 
+            'slideshow slideshow'
+            'headerTitle headerTitle'
+            'item item';
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        background-color: rgba(0,0,0,.3);
+        padding: 10px;
+        margin: 0.5%;
+        margin-left: 0.5%;
+        margin-right: 0.5%;
+        border: solid;
+        border-radius: 5px;
+        border-width: 0px;
+        text-align: center;
+    }
+
+    .categoryName {
+        color: whitesmoke;
+        font-size: x-large;
+        font-weight: bold;
+        margin-top: -65px;
+        text-align: left;
+        padding-left: 115px;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    }
+}
+
+@media only screen and (min-width: 1120px) { 
+    .mainGrid {
+        display: grid;
+        grid-template-areas: 
+            'slideshow slideshow slideshow'
+            'headerTitle headerTitle headerTitle'
+            'item item item';
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        background-color: rgba(0,0,0,.3);
+        padding: 10px;
+        margin: 0.5%;
+        margin-left: 5%;
+        margin-right: 5%;
+        border: solid;
+        border-radius: 5px;
+        border-width: 0px;
+        text-align: center;
+    }
+
+    .categoryName {
+        color: whitesmoke;
+        font-size: x-large;
+        font-weight: bold;
+        margin-top: -55px;
+        text-align: left;
+        padding-left: 30px;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    }
+}
+
+@media only screen and (min-width: 1250px) { 
+    .mainGrid {
+        display: grid;
+        grid-template-areas: 
+            'slideshow slideshow slideshow'
+            'headerTitle headerTitle headerTitle'
+            'item item item';
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        background-color: rgba(0,0,0,.3);
+        padding: 10px;
+        margin: 0.5%;
+        margin-left: 10%;
+        margin-right: 10%;
+        border: solid;
+        border-radius: 5px;
+        border-width: 0px;
+        text-align: center;
+    }
+
+    .categoryName {
+        color: whitesmoke;
+        font-size: x-large;
+        font-weight: bold;
+        margin-top: -60px;
+        text-align: left;
+        padding-left: 65px;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    }
+} 
+
+@media only screen and (min-width: 1670px) { 
+    .mainGrid {
+        display: grid;
+        grid-template-areas: 
+            'slideshow slideshow slideshow slideshow'
+            'headerTitle headerTitle headerTitle headerTitle'
+            'item item item item';
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        background-color: rgba(0,0,0,.3);
+        padding: 10px;
+        margin: 0.5%;
+        margin-left: 10%;
+        margin-right: 10%;
+        border: solid;
+        border-radius: 5px;
+        border-width: 0px;
+        text-align: center;
+    }
+
+    .categoryName {
+        color: whitesmoke;
+        font-size: x-large;
+        font-weight: bold;
+        margin-top: -55px;
+        text-align: left;
+        padding-left: 35px;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    }
+}
+
+/* --Start Up Pages Media Queries-- */
+
+@media only screen and (max-width: 600px) { 
+    .signInGrid, .registrationGrid {
+        display: grid;
+        grid-template-areas: 
+            'signInHeader'
+            'signInMain'
+            'signInRegister';
+        gap: 10px;
+        background-color: rgba(0,0,0,.2);
+        padding: 10px;
+        padding-bottom: 5px;
+        color: whitesmoke;
+        text-align: center;
+        margin-top: 1%;
+        margin-bottom: 1%;
+        margin-left: 5%;
+        margin-right: 5%;
+        width: 90%;
+        border: solid;
+        border-width: 0px;
+        border-radius: 10px;
+    }
+}
+
+@media only screen and (min-width: 600px) { 
+    .signInGrid, .registrationGrid {
+        display: grid;
+        grid-template-areas: 
+            'signInHeader'
+            'signInMain'
+            'signInRegister';
+        gap: 10px;
+        background-color: rgba(0,0,0,.2);
+        padding: 10px;
+        padding-bottom: 5px;
+        color: whitesmoke;
+        text-align: center;
+        margin-top: 1%;
+        margin-bottom: 1%;
+        margin-left: 10%;
+        margin-right: 10%;
+        width: 80%;
+        border: solid;
+        border-width: 0px;
+        border-radius: 10px;
+    }
+}
+
+@media only screen and (min-width: 992px) { 
+    .signInGrid, .registrationGrid {
+        display: grid;
+        grid-template-areas: 
+            'signInHeader'
+            'signInMain'
+            'signInRegister';
+        gap: 10px;
+        background-color: rgba(0,0,0,.2);
+        padding: 10px;
+        padding-bottom: 5px;
+        color: whitesmoke;
+        text-align: center;
+        margin-top: 1%;
+        margin-bottom: 1%;
+        margin-left: 25%;
+        margin-right: 25%;
+        width: 50%;
+        border: solid;
+        border-width: 0px;
+        border-radius: 10px;
+    }
+}
+
+@media only screen and (min-width: 1400px) { 
+    .signInGrid, .registrationGrid {
+        display: grid;
+        grid-template-areas: 
+            'signInHeader'
+            'signInMain'
+            'signInRegister';
+        gap: 10px;
+        background-color: rgba(0,0,0,.2);
+        padding: 10px;
+        padding-bottom: 5px;
+        color: whitesmoke;
+        text-align: center;
+        margin-top: 1%;
+        margin-bottom: 1%;
+        margin-left: 30%;
+        margin-right: 30%;
+        width: 40%;
+        border: solid;
+        border-width: 0px;
+        border-radius: 10px;
+    }
+}
+
+@media only screen and (min-width: 1670px) { 
+    .signInGrid, .registrationGrid {
+        display: grid;
+        grid-template-areas: 
+            'signInHeader'
+            'signInMain'
+            'signInRegister';
+        gap: 10px;
+        background-color: rgba(0,0,0,.2);
+        padding: 10px;
+        padding-bottom: 5px;
+        color: whitesmoke;
+        text-align: center;
+        margin-top: 1%;
+        margin-bottom: 1%;
+        margin-left: 33.3%;
+        margin-right: 33.3%;
+        width: 33.3%;
+        border: solid;
+        border-width: 0px;
+        border-radius: 10px;
+    }
+}

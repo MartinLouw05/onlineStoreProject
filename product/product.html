@@ -19,9 +19,11 @@
                     <div class='title'>
                         <h1 @click="navigateToLandingPage()" class='btnCompanyTitle'>CRICKET DIRECT</h1>
                     </div>
-                    <div class='titleButtons'>
+                    <div class='titleSearch'>
                         <input type='text' id="searchItem" placeholder='Search' class='navSearch'>
                         <button type="button" @click="performSearch();" class='navSearchBtn'>&#128269</button>
+                    </div>
+                    <div class='titleButtons'>
                         <button type="button" id='btnAccInfo' name='btnAccInfo' v-if="displayUser" @click="navigateToClient()" class='btnAccInfo'>&#128100</button><label>{{ userName }}</label>
                         <button type="button" id='btnSignIn' name='btnSignIn' v-if="displaySignIn" @click="navigateToSignIn()" class='navBtn'>Sign In</button>
                         <button type="button" id='btnCart' name='btnCart' @click="navigateToCart()" class='navBtn'>&#128722 ({{ amountOfItemsInCart }})</button>

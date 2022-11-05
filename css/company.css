@@ -1,19 +1,5 @@
 
 /* --about.php-- */
-
-.frmAbout {
-    text-align: left;
-    padding: 10px;
-    background-color: rgba(0,0,0,.2);
-    border: solid;
-    border-width: 0px;
-    border-radius: 10px;
-    margin: 0.5%;
-    margin-left: 10%;
-    margin-right: 10%;    
-    color: whitesmoke;
-}
-
 .aboutHeader {
     grid-area: aboutHeader;
 }
@@ -28,24 +14,6 @@
 
 .aboutDevInfo {
     grid-area: aboutDevInfo;
-}
-
-.aboutGrid {
-    display: grid;
-    grid-template-areas: 
-        'aboutHeader aboutHeader aboutHeader'
-        'aboutInfo aboutInfo aboutInfo'
-        'aboutDevHeader aboutDevHeader aboutDevHeader'
-        'aboutDevImage aboutDevInfo aboutDevInfo';
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    padding: 10px;
-    margin: 0.5%;
-    background-color: rgba(0,0,0,.2);
-    border: solid;
-    border-radius: 5px;
-    border-width: 0px;
-    text-align: left;
 }
 
 .aboutInfo > p {
@@ -72,22 +40,7 @@
     border-radius: 50%;
 }
 
-
 /* --contactUs.php-- */
-
-.frmContact {
-    text-align: left;
-    padding: 1px;
-    background-color: rgba(0,0,0,.2);
-    border: solid;
-    border-width: 0px;
-    border-radius: 10px;
-    margin: 0.5%;
-    margin-left: 10%;
-    margin-right: 10%;    
-    color: whitesmoke;
-}
-
 .contactMap {
     grid-area: contactMap;
 }
@@ -98,22 +51,6 @@
 
 .socials {
     grid-area: socials;
-}
-
-.contactUsGrid {
-    display: grid;
-    grid-template-areas: 
-        'contactMap contactMap contact'
-        'contactMap contactMap offices'
-        'contactMapInfo socials socials';
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    padding: 10px;
-    margin: 0.5%;
-    border: solid;
-    border-radius: 5px;
-    border-width: 0px;
-    text-align: left;
 }
 
 .contactUsGrid > div {
@@ -131,11 +68,6 @@
 
 .contact > div > textarea {
     height: 160px;
-}
-
-.offices {
-    height: fit-content;
-    white-space: pre-wrap;
 }
 
 .mapouter {
@@ -176,23 +108,378 @@
     border-radius: 5px;
 }
 
-.socialsGrid {
-    display: grid;
-    grid-template-areas: 
-        'socialsIcon socialsIcon socialsIcon socialsIcon';
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    padding: 10px;
-    margin: 0.5%;
-    margin-left: 10%;
-    border: solid;
-    border-radius: 5px;
-    border-width: 0px;
-    text-align: center;
+/* --About Page Media Queries-- */
+@media only screen and (max-width: 600px) { 
+    .frmAbout {
+        text-align: left;
+        padding: 10px;
+        background-color: rgba(0,0,0,.2);
+        border: solid;
+        border-width: 0px;
+        border-radius: 10px;
+        margin: 0.5%;
+        margin-left: 0.5%;
+        margin-right: 0.5%;    
+        color: whitesmoke;
+    }
+
+    .aboutGrid {
+        display: grid;
+        grid-template-areas: 
+            'aboutHeader aboutHeader aboutHeader'
+            'aboutInfo aboutInfo aboutInfo'
+            'aboutDevHeader aboutDevHeader aboutDevHeader'
+            'aboutDevImage aboutDevImage aboutDevImage'
+            'aboutDevInfo aboutDevInfo aboutDevInfo';
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        padding: 10px;
+        margin: 0.5%;
+        background-color: rgba(0,0,0,.2);
+        border: solid;
+        border-radius: 5px;
+        border-width: 0px;
+        text-align: left;
+    }
+
+    .aboutDevImage {
+        grid-area: aboutDevImage;
+        text-align: center;
+    }
 }
 
-.socialsIcon {
-    cursor: pointer;
-    width: 50%;
-    margin-top: 25px;
+@media only screen and (min-width: 600px) { 
+    .frmAbout {
+        text-align: left;
+        padding: 10px;
+        background-color: rgba(0,0,0,.2);
+        border: solid;
+        border-width: 0px;
+        border-radius: 10px;
+        margin: 0.5%;
+        margin-left: 0.5%;
+        margin-right: 0.5%;    
+        color: whitesmoke;
+    }
+
+    .aboutGrid {
+        display: grid;
+        grid-template-areas: 
+            'aboutHeader aboutHeader aboutHeader'
+            'aboutInfo aboutInfo aboutInfo'
+            'aboutDevHeader aboutDevHeader aboutDevHeader'
+            'aboutDevImage aboutDevImage aboutDevImage'
+            'aboutDevInfo aboutDevInfo aboutDevInfo';
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        padding: 10px;
+        margin: 0.5%;
+        background-color: rgba(0,0,0,.2);
+        border: solid;
+        border-radius: 5px;
+        border-width: 0px;
+        text-align: left;
+    }
+
+    .aboutDevImage {
+        grid-area: aboutDevImage;
+        text-align: center;
+    }
+}
+
+@media only screen and (min-width: 768px) { 
+    .frmAbout {
+        text-align: left;
+        padding: 10px;
+        background-color: rgba(0,0,0,.2);
+        border: solid;
+        border-width: 0px;
+        border-radius: 10px;
+        margin: 0.5%;
+        margin-left: 5%;
+        margin-right: 5%;    
+        color: whitesmoke;
+    }
+
+    .aboutGrid {
+        display: grid;
+        grid-template-areas: 
+            'aboutHeader aboutHeader aboutHeader'
+            'aboutInfo aboutInfo aboutInfo'
+            'aboutDevHeader aboutDevHeader aboutDevHeader'
+            'aboutDevImage aboutDevImage aboutDevImage'
+            'aboutDevInfo aboutDevInfo aboutDevInfo';
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        padding: 10px;
+        margin: 0.5%;
+        background-color: rgba(0,0,0,.2);
+        border: solid;
+        border-radius: 5px;
+        border-width: 0px;
+        text-align: left;
+    }
+
+    .aboutDevImage {
+        grid-area: aboutDevImage;
+        text-align: center;
+    }
+}
+
+@media only screen and (min-width: 992px) { 
+    .frmAbout {
+        text-align: left;
+        padding: 10px;
+        background-color: rgba(0,0,0,.2);
+        border: solid;
+        border-width: 0px;
+        border-radius: 10px;
+        margin: 0.5%;
+        margin-left: 10%;
+        margin-right: 10%;    
+        color: whitesmoke;
+    }
+
+    .aboutGrid {
+        display: grid;
+        grid-template-areas: 
+            'aboutHeader aboutHeader aboutHeader'
+            'aboutInfo aboutInfo aboutInfo'
+            'aboutDevHeader aboutDevHeader aboutDevHeader'
+            'aboutDevImage aboutDevInfo aboutDevInfo';
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        padding: 10px;
+        margin: 0.5%;
+        background-color: rgba(0,0,0,.2);
+        border: solid;
+        border-radius: 5px;
+        border-width: 0px;
+        text-align: left;
+    }
+}
+
+/* --Contact Us Page Media Queries-- */
+@media only screen and (max-width: 600px) { 
+    .frmContact {
+        text-align: left;
+        padding: 1px;
+        background-color: rgba(0,0,0,.2);
+        border: solid;
+        border-width: 0px;
+        border-radius: 10px;
+        margin: 0.5%;
+        margin-left: 0.5%;
+        margin-right: 0.5%;    
+        color: whitesmoke;
+    }
+
+    .contactUsGrid {
+        display: grid;
+        grid-template-areas: 
+            'contactMap contactMap '
+            'contact contact' 
+            'contactMapInfo offices'
+            'socials socials';
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+        gap: 10px;
+        padding: 10px;
+        margin: 0.5%;
+        border: solid;
+        border-radius: 5px;
+        border-width: 0px;
+        text-align: left;
+    }
+
+    .contact {
+        grid-area: contact;
+    }
+
+    .socialsGrid {
+        display: grid;
+        grid-template-areas: 
+            'socialsIcon socialsIcon socialsIcon socialsIcon';
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        padding: 10px;
+        margin: 0.5%;
+        margin-left: 10%;
+        border: solid;
+        border-radius: 5px;
+        border-width: 0px;
+        text-align: center;
+    }
+    
+    .socialsIcon {
+        cursor: pointer;
+        width: 50%;
+        margin-top: 25px;
+    }
+}
+
+@media only screen and (min-width: 600px) { 
+    .frmContact {
+        text-align: left;
+        padding: 1px;
+        background-color: rgba(0,0,0,.2);
+        border: solid;
+        border-width: 0px;
+        border-radius: 10px;
+        margin: 0.5%;
+        margin-left: 0.5%;
+        margin-right: 0.5%;    
+        color: whitesmoke;
+    }
+
+    .contactUsGrid {
+        display: grid;
+        grid-template-areas: 
+            'contactMap contactMap '
+            'contact contact' 
+            'contactMapInfo offices'
+            'socials socials';
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+        gap: 10px;
+        padding: 10px;
+        margin: 0.5%;
+        border: solid;
+        border-radius: 5px;
+        border-width: 0px;
+        text-align: left;
+    }
+
+    .contact {
+        grid-area: contact;
+    }
+
+    .socialsGrid {
+        display: grid;
+        grid-template-areas: 
+            'socialsIcon socialsIcon socialsIcon socialsIcon';
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        padding: 10px;
+        margin: 0.5%;
+        margin-left: 10%;
+        border: solid;
+        border-radius: 5px;
+        border-width: 0px;
+        text-align: center;
+    }
+    
+    .socialsIcon {
+        cursor: pointer;
+        width: 50%;
+        margin-top: 25px;
+    }
+}
+
+@media only screen and (min-width: 768px) { 
+    .frmContact {
+        text-align: left;
+        padding: 1px;
+        background-color: rgba(0,0,0,.2);
+        border: solid;
+        border-width: 0px;
+        border-radius: 10px;
+        margin: 0.5%;
+        margin-left: 5%;
+        margin-right: 5%;    
+        color: whitesmoke;
+    }
+
+    .contactUsGrid {
+        display: grid;
+        grid-template-areas: 
+            'contactMap contactMap contactMap '
+            'contactMapInfo contact contact' 
+            'offices socials socials';
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto;
+        gap: 10px;
+        padding: 10px;
+        margin: 0.5%;
+        border: solid;
+        border-radius: 5px;
+        border-width: 0px;
+        text-align: left;
+    }
+
+    .contact {
+        grid-area: contact;
+    }
+
+    .socialsGrid {
+        display: grid;
+        grid-template-areas: 
+            'socialsIcon socialsIcon socialsIcon socialsIcon';
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        padding: 10px;
+        margin: 0.5%;
+        margin-left: 10%;
+        border: solid;
+        border-radius: 5px;
+        border-width: 0px;
+        text-align: center;
+    }
+    
+    .socialsIcon {
+        cursor: pointer;
+        width: 50%;
+        margin-top: 25px;
+    }
+}
+
+@media only screen and (min-width: 992px) { 
+    .frmContact {
+        text-align: left;
+        padding: 1px;
+        background-color: rgba(0,0,0,.2);
+        border: solid;
+        border-width: 0px;
+        border-radius: 10px;
+        margin: 0.5%;
+        margin-left: 5%;
+        margin-right: 5%;    
+        color: whitesmoke;
+    }
+
+    .contactUsGrid {
+        display: grid;
+        grid-template-areas: 
+            'contactMap contactMap contact'
+            'contactMap contactMap offices'
+            'contactMapInfo socials socials';
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        padding: 10px;
+        margin: 0.5%;
+        border: solid;
+        border-radius: 5px;
+        border-width: 0px;
+        text-align: left;
+    }
+
+    .offices {
+        height: fit-content;
+        white-space: pre-wrap;
+    }
+}
+
+@media only screen and (min-width: 1200px) { 
+    .frmContact {
+        text-align: left;
+        padding: 1px;
+        background-color: rgba(0,0,0,.2);
+        border: solid;
+        border-width: 0px;
+        border-radius: 10px;
+        margin: 0.5%;
+        margin-left: 10%;
+        margin-right: 10%;    
+        color: whitesmoke;
+    }
 }
