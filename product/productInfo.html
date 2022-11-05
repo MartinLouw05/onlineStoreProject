@@ -62,27 +62,12 @@
                     <div class='productInfoGrid'>
                         <div class='productInfoImage'>
                             <div class='productInfoImageList'>
-                                <div class='productInfoImageListDisplay'>
-                                    <img src='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png' class='productInfoImageListDisplayItem'>
+                                <div v-for="product in productImage" @mouseover="changeImage(product.product_image);" class='productInfoImageListDisplay'>
+                                    <img :src='product.product_image' alt="Image Not Found" class='productInfoImageListDisplayItem'>
                                 </div>  
-                                <div class='productInfoImageListDisplay'>
-                                    <img src='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png' class='productInfoImageListDisplayItem'>
-                                </div>  
-                                <div class='productInfoImageListDisplay'>
-                                    <img src='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png' class='productInfoImageListDisplayItem'>
-                                </div> 
-                                <div class='productInfoImageListDisplay'>
-                                    <img src='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png' class='productInfoImageListDisplayItem'>
-                                </div> 
-                                <div class='productInfoImageListDisplay'>
-                                    <img src='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png' class='productInfoImageListDisplayItem'>
-                                </div> 
-                                <div class='productInfoImageListDisplay'>
-                                    <img src='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png' class='productInfoImageListDisplayItem'>
-                                </div> 
                             </div>        
-                            <div class='productInfoImageDisplay'>
-                                <img src='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png' class='productInfoImageDisplayItem'>
+                            <div v-for="product in productThumbnail" class='productInfoImageDisplay'>
+                                <img id="mainImageDisplay" :src='product.product_thumbnail_image' alt="Image Not Found" class='productInfoImageDisplayItem'>
                             </div>
                         </div>
                         <div v-for="product in productItem" class='productInformation'>

@@ -165,7 +165,7 @@
     height: 390px;
 }
 
-.btnBats, .btnGloves, .btnBags, .btnArm, .btnAccessories, .btnPads, .btnHelmets, .btnBalls, .btnThigh, .btnOther, .btnApparel, .btnFootwear {
+.btnCategory {
     cursor: pointer;
     width: 320px;
     height: 320px;
@@ -179,70 +179,18 @@
     color: aliceblue;
     text-align: left;
     background-position: center;
-}
-
-.btnBats {
-    background-image: url('https://morkelsport.co.za/wp-content/uploads/2021/04/dsc-munro-15.jpg');
-    background-size: contain;
-}
-
-.btnGloves {
-    background-image: url('https://www.tcscricket.com/wp-content/uploads/2021/08/KOOKABURRA-GHOST-900-BATTING-GLOVES-5-510x510.jpg');
-    background-size: contain;
-}
-
-.btnBags {
-    background-image: url('https://cdn.shopify.com/s/files/1/0276/1811/5618/products/2b2d566e68017e67307e2c13cd1322b5ad19a868_500x.png?v=1602345668');
-    background-size: contain;
-}
-
-.btnArm {
-    background-image: url('https://contents.mediadecathlon.com/p1654984/f3885c50fcb87e13cab5f5196549ec65/p1654984.jpg?format=auto&quality=70&f=1024x0');
-    background-size: contain;
-}
-
-.btnAccessories {
-    background-image: url('https://www.sstoncricket.com/media/catalog/tmp/category/accessories_1_.png');
-    background-size: contain;
-}
-
-.btnPads {
-    background-image: url('https://cdn.shopify.com/s/files/1/0276/1811/5618/products/4c5a3554bc6fe380bd64aa0c17e3584a4034cc36_600x.png?v=1604931689');
-    background-size: contain;
-}
-
-.btnHelmets {
-    background-image: url('https://cdn.shopify.com/s/files/1/0276/1811/5618/products/67b0fdbaa1431dcb24f30d8e01cbc8a743a8ecf5_600x.png?v=1603116728');
-    background-size: contain;
-}
-
-.btnBalls {
-    background-image: url('https://staticc.sportskeeda.com/wp-content/uploads/2015/05/cricket-balls-1432109232-2369680.jpg');
-    background-size: cover;    
-}
-
-.btnThigh {
-    background-image: url('https://cricketcompanystore.co.za/wp-content/uploads/2021/06/AERO-P1.jpg');
-    background-size: contain;
-}
-
-.btnOther {
-    background-image: url('http://btlmsports.co.za/wp-content/uploads/2018/07/kookaburra_spring_return_cricket_stumps-1.jpg');
-    background-size: contain;
-}
-
-.btnApparel {
-    background-image: url('https://www.mrcrickethockey.com/wp-content/uploads/2019/03/animage-1.png');
-    background-size: contain;
     background-color: black;
-    background-repeat: no-repeat;
+    background-size: contain;
 }
 
-.btnFootwear {
-    background-image: url('https://cdn.shopify.com/s/files/1/0274/3707/2468/products/0N_hmMI_1024x1024.png?v=1645014488');
-    background-size: contain;
-    background-color: black;
-    background-repeat: no-repeat;
+.categoryName {
+    color: whitesmoke;
+    font-size: x-large;
+    font-weight: bold;
+    margin-top: -55px;
+    text-align: left;
+    padding-left: 35px;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 .footerGrid {

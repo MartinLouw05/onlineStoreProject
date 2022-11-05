@@ -6,6 +6,8 @@ let productInfoPage = new Vue ({
         numberOfCategories : 0,
         brandList : [],
         productItem : [],
+        productThumbnail : [],
+        productImage : [],
         brandProductItem : [],
         userName : "",
         displayUser : false,
@@ -112,8 +114,10 @@ let productInfoPage = new Vue ({
             
             axios.post('http://localhost/onlineStoreApi/product.php?crud=selectProduct', form_data) 
             .then(function (response) {
-                // handle success  
+                // handle success
                 productInfoPage.productItem = response.data.product;
+                productInfoPage.productThumbnail = response.data.productThumbnail;
+                productInfoPage.productImage = response.data.productImage;
                 productInfoPage.getSameBrandProducts(response.data.product[0].product_brand_name);
             })
             .catch(function (error) {
@@ -123,6 +127,11 @@ let productInfoPage = new Vue ({
             .finally(function () {
                 // always executed
             }); 
+        },
+        //Change Main Image Display
+        changeImage : function(image) {
+            let mainImageDisplay = document.getElementById("mainImageDisplay");
+            mainImageDisplay.src = image;
         },
         //Get Products for Carousel
         getSameBrandProducts : function(brandName) {

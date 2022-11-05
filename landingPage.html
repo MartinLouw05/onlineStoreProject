@@ -62,10 +62,10 @@
                         <div id='carouselSlideShow' class='carousel slide' data-ride='carousel'>
                             <div class='carousel-inner'>
                                 <div class='carousel-item active'>
-                                    <img src='https://i.pinimg.com/originals/bf/4f/6f/bf4f6fc68ef863b97be6a7a86fb6b303.jpg' class='carouselImage'>
+                                    <img src='https://i.pinimg.com/originals/bf/4f/6f/bf4f6fc68ef863b97be6a7a86fb6b303.jpg' alt="Image Not Found" class='carouselImage'>
                                 </div>
                                 <div class='carousel-item'>
-                                    <img src='https://64.media.tumblr.com/fb2290019ab5747efeed8c4b9edf7e9f/tumblr_inline_o5im6rIDC11tm5d9e_1280.jpg' class='carouselImage'>
+                                    <img src='https://64.media.tumblr.com/fb2290019ab5747efeed8c4b9edf7e9f/tumblr_inline_o5im6rIDC11tm5d9e_1280.jpg' alt="Image Not Found" class='carouselImage'>
                                 </div>
                             </div>
                             <a class="carousel-control-prev" href="#carouselSlideShow" role="button" data-slide="prev">
@@ -83,7 +83,8 @@
                     </div> 
                     <div v-for="categories in categoryList">
                         <div class='item'>
-                            <button type="button" :id='categories.product_category_id' v-bind:src="categories.product_category_id" name='btnBats' @click="selectCategory(categories); navigateToProduct();" class='btnBats'>{{ categories.product_category_name }}</button>
+                            <img :id='categories.product_category_id' :src="categories.product_category_image" @click="selectCategory(categories); navigateToProduct();" alt="Image Not Found" class='btnCategory'>
+                            <div class="categoryName">{{ categories.product_category_name }}</div>
                         </div>
                     </div>   
                 </form>

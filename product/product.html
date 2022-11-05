@@ -64,7 +64,7 @@
                     </div>
                     <button type="button" v-for="product in productList" :id="product.product_id" @click="selectedProduct(product); navigateToSelectedProduct();" class='productItem'>
                         <div class='productImage'>
-                            <img src='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png' class='productImageDisplay'>
+                            <img :src='product.product_thumbnail_image' alt="Image Not Found" class='productImageDisplay'>
                         </div>
                         <div class='productName'>
                             <h3>{{ product.product_name }}</h3>

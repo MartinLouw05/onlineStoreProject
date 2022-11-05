@@ -201,6 +201,19 @@ let contactUsPage = new Vue ({
         },
         scrollTop : function() {
             window.scrollTo({top: 0, behavior: 'smooth'});
+        },
+        //Socials Navigation
+        navigateToFacebook : function() {
+            window.open("https://www.facebook.com");
+        },
+        navigateToTwitter : function() {
+            window.open("https://www.twitter.com");
+        },
+        navigateToInstagram : function() {
+            window.open("https://www.instagram.com");
+        },
+        navigateToYoutube : function() {
+            window.open("https://www.youtube.com");
         }
     },
     //Run the functions on start

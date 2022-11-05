@@ -45,8 +45,14 @@
     text-align: center;
 }
 
+.productImage {
+    height: 270px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
 .productImageDisplay {
-    width: 270px;
+    height: 250px;
 }
 
 .productName {
@@ -144,9 +150,13 @@
     text-align: center;
 }
 
+.productInfoImageListDisplay {
+    cursor: pointer;
+}
+
 .productInfoImageDisplayItem {
     cursor: pointer;
-    width: 600px;
+    height: 537px;
 }
 
 .productInfoImageList {
@@ -165,7 +175,7 @@
 
 .productInfoImageListDisplayItem {
     cursor: pointer;
-    width: 50px;
+    height: 50px;
 }
 
 .productInformation {

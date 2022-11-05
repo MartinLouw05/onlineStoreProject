@@ -70,14 +70,16 @@
                             <div v-for="product in cartItem" class='cartGrid'>
                                 <div class="cartItem">
                                     <div class='cartImage'>
-                                        <img src='https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png' alt="Image Not Found" class='productImage'>
+                                        <img :src='product.product_thumbnail_image' alt="Image Not Found" class='productImage'>
                                     </div>
                                     <div class='cartDesc'>
                                         <div><h4>{{ product.product_name }}</h4></div>
                                         <div>Available Stock: {{ product.product_quantity }}</div>
-                                        <div>Quantity:</div>
-                                        <div><input type="number" :value="product.client_cart_quantity" class="quantity"></div>
-                                        <div class='purchaseInfo'>&#128712 Purchase limit of 5 per customer.</div>
+                                        <hr>
+                                        <div>Quantity: <a :id="product.product_name">{{ product.client_cart_quantity }}</a></div>                                        
+                                        <div><button type="button" @click="calculateSubtotal(product, 'add')" class="btnAddQuantity">&#43;</button>
+                                             <button type="button" @click="calculateSubtotal(product, 'subtract')" class="btnRemoveQuantity">&#8722;</button></div>
+                                        
                                     </div>
                                     <div class='cartPrice'>
                                         <div>R {{ product.product_price }}</div>

@@ -72,6 +72,7 @@ let landingPage = new Vue ({
             axios.get('http://localhost/onlineStoreApi/productCategory.php') 
             .then(function (response) {
                 // handle success
+                console.log(response)
                 landingPage.categoryList = response.data.category; 
                 landingPage.numberOfCategories = landingPage.categoryList.length;
                 landingPage.getBrands();

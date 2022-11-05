@@ -59,6 +59,14 @@ let cartPage = new Vue ({
                 else {
                     // handle success
                     cartPage.amountOfItemsInCart = response.data.cart.length;
+                    
+                    //Check for Empty Cart
+                    if (cartPage.amountOfItemsInCart == 0) {
+                        cartPage.items = false;
+                    }
+                    else {
+                        //Cart Is Not Empty
+                    }
                 }
             })
         },
@@ -80,9 +88,29 @@ let cartPage = new Vue ({
 
                     for (i = 0; i < response.data.cart.length; i++) {
                         cartPage.cartTotal = parseInt(cartPage.cartTotal) + (parseInt(response.data.cart[i].product_price) * parseInt(response.data.cart[i].client_cart_quantity));
-                    }
+                    }                  
                 }
             })
+        },
+        calculateSubtotal : function(product, rule) {
+            let productQuantity = document.getElementById(product.product_name);
+
+            if (rule == "add") {
+                this.cartTotal = parseInt(cartPage.cartTotal) + parseInt(product.product_price);                
+                productQuantity.innerHTML = parseInt(productQuantity.innerHTML) + parseInt(1);                               
+            }
+            else if (rule == "subtract" && productQuantity.innerHTML > "0") {
+                this.cartTotal = parseInt(cartPage.cartTotal) - parseInt(product.product_price);                
+                productQuantity.innerHTML = parseInt(productQuantity.innerHTML) - parseInt(1);
+            }
+            else {
+                if (confirm("Remove Item from Cart") == true) {
+                    this.removeFromCart(product);
+                }
+                else {
+                    //Do Nothing
+                }
+            }            
         },
         //Create Dropdown
         getCategories : function() {
