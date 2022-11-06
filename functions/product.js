@@ -90,6 +90,7 @@ let productPage = new Vue ({
             });           
         },
         getBrands : async function() {
+            productPage.brandList = [];
             category = productPage.categoryList;
             for (i = 0; i < category.length; i++) {
                 let nextCategory = category[i];
@@ -111,7 +112,14 @@ let productPage = new Vue ({
                 })
                 .finally(function () {
                     // always executed
-                });                
+                });
+            }
+
+            if (productPage.brandList.length == category.length) {
+                // Dropdown Created Correctly
+            }
+            else {
+                productPage.getBrands();                
             }
         },
         //Get Product Information
@@ -221,7 +229,7 @@ let productPage = new Vue ({
         userLogOut : function() {
             sessionStorage.clear();
             productPage.displaySignIn = true;
-            package.displayLogOut = false;
+            productPage.displayLogOut = false;
             productPage.displayUser = false;
             window.location.href = '../landingPage.html';
         },
@@ -231,11 +239,11 @@ let productPage = new Vue ({
     },
     //Run the functions on start
     created : function() {
-        this.getActiveUser();        
+        this.getActiveUser(); 
     },
     //Continiously run these functions
     mounted() {
         this.getProducts();
-        this.getCategories();
+        this.getCategories();        
     }
 })

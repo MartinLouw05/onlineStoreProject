@@ -92,26 +92,6 @@ let cartPage = new Vue ({
                 }
             })
         },
-        calculateSubtotal : function(product, rule) {
-            let productQuantity = document.getElementById(product.product_name);
-
-            if (rule == "add") {
-                this.cartTotal = parseInt(cartPage.cartTotal) + parseInt(product.product_price);                
-                productQuantity.innerHTML = parseInt(productQuantity.innerHTML) + parseInt(1);                               
-            }
-            else if (rule == "subtract" && productQuantity.innerHTML > "0") {
-                this.cartTotal = parseInt(cartPage.cartTotal) - parseInt(product.product_price);                
-                productQuantity.innerHTML = parseInt(productQuantity.innerHTML) - parseInt(1);
-            }
-            else {
-                if (confirm("Remove Item from Cart") == true) {
-                    this.removeFromCart(product);
-                }
-                else {
-                    //Do Nothing
-                }
-            }            
-        },
         //Create Dropdown
         getCategories : function() {
             axios.get('http://localhost/onlineStoreApi/productCategory.php') 
@@ -155,27 +135,91 @@ let cartPage = new Vue ({
                 });                
             }
         },
+        //Quantity Changes
+        calculateSubtotal : function(product, rule) {
+            let productQuantity = document.getElementById(product.product_name);
+
+            if (rule == "add") {
+                for (i = 0; i < cartPage.cartItem.length; i++) {     
+                    if (cartPage.cartItem[i].product_id == product.product_id) {                        
+                        cartPage.cartItem[i].client_cart_quantity = parseInt(cartPage.cartItem[i].client_cart_quantity) + parseInt(1);
+                        this.cartTotal = parseInt(cartPage.cartTotal) + parseInt(product.product_price);
+
+                        this.updateCartQuantity(cartPage.cartItem[i].product_id, cartPage.cartItem[i].client_cart_quantity);
+                    }            
+                }                            
+            }
+            else if (rule == "subtract" && productQuantity.innerHTML > "1") {
+                for (i = 0; i < cartPage.cartItem.length; i++) {     
+                    if (cartPage.cartItem[i].product_id == product.product_id) {                        
+                        cartPage.cartItem[i].client_cart_quantity = parseInt(cartPage.cartItem[i].client_cart_quantity) - parseInt(1);
+                        this.cartTotal = parseInt(cartPage.cartTotal) - parseInt(product.product_price);
+
+                        this.updateCartQuantity(cartPage.cartItem[i].product_id, cartPage.cartItem[i].client_cart_quantity);
+                    }            
+                }
+            }
+            else {
+                if (confirm("Remove Item from Cart?") == true) {
+                    this.removeFromCart(product);
+                }
+                else {
+                    //Do Nothing
+                }
+            }            
+        },
         //Remove Item from Cart
         removeFromCart : function(product) {
+            this.cartTotal = parseInt(cartPage.cartTotal) - (parseInt(product.product_price) * parseInt(product.client_cart_quantity));
+
+            for (i = 0; i < cartPage.cartItem.length; i++) {     
+                if (cartPage.cartItem[i].product_id == product.product_id) { 
+                    cartPage.cartItem.splice(i, 1); 
+                }  
+                else {
+                    alert("Failed to Remove Item.  Please Refresh and Try Again");
+                }          
+            }
+
             let clientID = sessionStorage.getItem("user");
             
             let form_data = new FormData();
             form_data.append("clientID", clientID);
             form_data.append("productID", product.product_id);
-
+            
             axios.post('http://localhost/onlineStoreApi/cart.php?crud=delete', form_data)
             .then (function(response) {
             
-            if (response.data.error) {  
-                // handle error                                    
-                alert(response.data.message);
-            }
-            else {
-                // handle success
-                alert(response.data.message);
-                window.location.href = 'cart.html';
-            }
-        })
+                if (response.data.error) {  
+                    // handle error                                    
+                    alert(response.data.message);
+                }
+                else {
+                    // handle success
+                    alert(response.data.message);
+                }
+            })
+        },
+        updateCartQuantity : function(productID, quantity) {
+            let clientID = sessionStorage.getItem("user");
+
+            let form_data = new FormData();
+            form_data.append("clientID", clientID);
+            form_data.append("productID", productID);
+            form_data.append("quantity", quantity);
+
+            axios.post('http://localhost/onlineStoreApi/cart.php?crud=updateQuantity', form_data)
+            .then (function(response) {
+            
+                if (response.data.error) {  
+                    // handle error                                    
+                    // console.log(response.data.message);
+                }
+                else {
+                    // handle success
+                    // console.log(response.data.message);
+                }
+            })
         },
         //User Search
         performSearch : function() {
@@ -235,11 +279,15 @@ let cartPage = new Vue ({
         },
         scrollTop : function() {
             window.scrollTo({top: 0, behavior: 'smooth'});
+        },
+        updateCart : function() {
+            
         }
     },
     //Run the functions on start
     created : function() {
-        this.getActiveUser();     
+        this.getActiveUser(); 
+        window.addEventListener('beforeunload', this.updateCart());    
     },
     //Continiously run these functions
     mounted() {
