@@ -10,7 +10,8 @@ let productPage = new Vue ({
         displayUser : false,
         displayLogOut : false,
         displaySignIn : true,
-        amountOfItemsInCart : 0
+        amountOfItemsInCart : 0,
+        noProduct : true
     },
     methods : {
         getActiveUser : function() {
@@ -131,6 +132,15 @@ let productPage = new Vue ({
                 console.log(response);
 
                 productPage.productList = response.data.product;
+                let productAmount = response.data.product.length;
+
+                if (productAmount == 0) {
+                    console.log("no prod")
+                    productPage.noProduct = false;
+                }
+                else {
+                    //Products Found
+                }
             })
             .catch(function (error) {
                 // handle error

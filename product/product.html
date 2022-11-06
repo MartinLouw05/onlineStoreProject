@@ -6,8 +6,7 @@
         <meta charset="UTF-8">
         <meta name="description" content="Online Store Project">
         <meta name="keywords" content="HTML, CSS, JavaScript">
-        <meta name="author" content="Martin Louw">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Martin Louw">        
 
 		<script type='module' src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -86,7 +85,12 @@
                         <div class='productPrice'>
                             R {{ product.product_price }}
                         </div> 
-                    </button>                    
+                    </button>
+                    <div v-if="!noProduct">
+                        <div class="productItem">
+                            <div class="noProductFound"><h4>It seems that there is nothing here</h4><a>Please search again by trying a different Phrase or Keyword</a><img src="../images/brokenwicket.jpg" alt="Image Not Found" class="noProductImage"></div>
+                        </div>
+                    </div>                    
                 </form>
                 <div class='productHelp'>
                     <div>
