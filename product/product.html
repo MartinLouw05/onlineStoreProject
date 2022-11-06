@@ -69,21 +69,21 @@
                     <div class='productTitle'>
                         <h2>Results</h2>
                     </div>
-                    <button type="button" v-for="product in productList" :id="product.product_id" @click="selectedProduct(product); navigateToSelectedProduct();" class='productItem'>
+                    <button type="button" v-for="product in productList" :id="product.id" @click="selectedProduct(product); navigateToSelectedProduct();" class='productItem'>
                         <div class='productImage'>
-                            <img :src='product.product_thumbnail_image' alt="Image Not Found" class='productImageDisplay'>
+                            <img :src='product.image' alt="Image Not Found" class='productImageDisplay'>
                         </div>
                         <div class='productName'>
-                            <h3>{{ product.product_name }}</h3>
+                            <h3>{{ product.name }}</h3>
                         </div>
                         <div class='productBrand'>
-                            <h4>{{ product.product_brand_name }}</h4>
+                            <h4>{{ product.brand }}</h4>
                         </div>
                         <div class='productDesc'>
-                            <p>{{ product.product_description }}</p>
+                            <p>{{ product.description }}</p>
                         </div>
                         <div class='productPrice'>
-                            R {{ product.product_price }}
+                            R {{ product.price }}
                         </div> 
                     </button>
                     <div v-if="!noProduct">

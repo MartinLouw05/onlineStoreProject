@@ -202,7 +202,7 @@ let clientInfoPage = new Vue ({
             
             axios.post('http://localhost/onlineStoreApi/client.php?crud=update', userData)
             .then (function(response) {
-                console.log(response);
+                // console.log(response);
                 clientInfoPage.updateUser = { id : "", name : "", surname : "", dob : "", contact : "", email : "" };
 
                 if (response.data.error) {

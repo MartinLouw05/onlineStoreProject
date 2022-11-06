@@ -100,7 +100,6 @@ let aboutPage = new Vue ({
                     // always executed
                 });                
             }
-            //console.log(aboutPage.brandList)
         },
         //User Search
         performSearch : function() {

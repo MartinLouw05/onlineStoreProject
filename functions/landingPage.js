@@ -60,7 +60,7 @@ let landingPage = new Vue ({
                 
                 if (response.data.error) {  
                     // handle error                                                   
-                    // console.log(response.data.message);
+                    console.log(response.data.message);
                 }
                 else {
                     // handle success
@@ -72,11 +72,10 @@ let landingPage = new Vue ({
             axios.get('http://localhost/onlineStoreApi/productCategory.php') 
             .then(function (response) {
                 // handle success
-                console.log(response)
+                // console.log(response)
                 landingPage.categoryList = response.data.category; 
                 landingPage.numberOfCategories = landingPage.categoryList.length;
-                landingPage.getBrands();
-                //landingPage.createNavigationBody(); 
+                landingPage.getBrands(); 
             })
             .catch(function (error) {
                 // handle error
@@ -110,7 +109,6 @@ let landingPage = new Vue ({
                     // always executed
                 });                
             }
-            //console.log(landingPage.brandList)
         },
         //User Search
         performSearch : function() {

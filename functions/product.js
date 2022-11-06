@@ -1,4 +1,16 @@
 
+//Product Class
+class Product {
+    constructor(id, image, name, brand, description, price) {
+        this.id = id;
+        this.image = image;
+        this.name = name;
+        this.brand = brand;
+        this.description = description;
+        this.price = price;
+    }    
+}
+
 let productPage = new Vue ({
     el : '#app',
     data : {
@@ -129,17 +141,18 @@ let productPage = new Vue ({
             axios.post('http://localhost/onlineStoreApi/product.php?crud=searchProduct', form_data) 
             .then(function (response) {
                 // handle success  
-                console.log(response);
-
-                productPage.productList = response.data.product;
+                // console.log(response);
+                //productPage.productList = response.data.product;
                 let productAmount = response.data.product.length;
 
                 if (productAmount == 0) {
-                    console.log("no prod")
                     productPage.noProduct = false;
                 }
                 else {
-                    //Products Found
+                    for (i = 0; i < productAmount; i++) {
+                        let myTest = new Product(response.data.product[i].product_id, response.data.product[i].product_thumbnail_image, response.data.product[i].product_name, response.data.product[i].product_brand_name, response.data.product[i].product_description, response.data.product[i].product_price);
+                        productPage.productList.push(myTest);
+                    }
                 }
             })
             .catch(function (error) {
@@ -167,7 +180,7 @@ let productPage = new Vue ({
         },
         //User Product Selection
         selectedProduct : function(product) {
-            sessionStorage.setItem("selectedProduct", product.product_id);
+            sessionStorage.setItem("selectedProduct", product.id);
         },
         selectCategory : function(category) {
             sessionStorage.setItem("selectedCategory", category.product_category_id);
@@ -218,11 +231,11 @@ let productPage = new Vue ({
     },
     //Run the functions on start
     created : function() {
-        this.getActiveUser();
-        this.getProducts();
+        this.getActiveUser();        
     },
     //Continiously run these functions
     mounted() {
+        this.getProducts();
         this.getCategories();
     }
 })

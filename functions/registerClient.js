@@ -57,7 +57,7 @@ let frmRegistration = new Vue ({
 
             axios.post('http://localhost/onlineStoreApi/client.php?crud=create', userData)
             .then (function(response) {
-                console.log(response);
+                // console.log(response);
                 frmRegistration.newUser = { name : "", surname : "", dob : "", contact : "", email : "", password : "" };
 
                 if (response.data.error) {
@@ -73,10 +73,10 @@ let frmRegistration = new Vue ({
             let form_data = new FormData();
 
             for (let key in userObj) {
-                console.log(key, userObj[key]);
+                //console.log(key, userObj[key]);
                 form_data.append(key, userObj[key]);
             }
-            console.log(form_data);
+            //console.log(form_data);
             return form_data;          
         }
     },
@@ -89,37 +89,3 @@ let frmRegistration = new Vue ({
         
     }
 })
-
-/*
-//Navigation Variables
-let btnBats = document.getElementById('btnBats');
-let btnSignIn = document.getElementById('btnSignIn');
-
-function test() {
-axios.get('http://localhost:3000/users')
-  .then(function (response) {
-    // handle success
-    console.log(response);
-  })
-  .catch(function (error) {
-    // handle error
-    console.log(error);
-  })
-  .finally(function () {
-    // always executed
-  });
-}
-
-function test1() {
-    axios.post('http://localhost:3000/users', {
-        firstName: 'Fred',
-        lastName: 'Flintstone'
-      })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    }
-*/

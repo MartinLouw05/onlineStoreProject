@@ -99,7 +99,6 @@ let contactUsPage = new Vue ({
                     // always executed
                 });                
             }
-            //console.log(contactUsPage.brandList)
         },
         //User Search
         performSearch : function() {

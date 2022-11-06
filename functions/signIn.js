@@ -13,7 +13,7 @@ let signInPage = new Vue ({
             axios.get('http://localhost/onlineStoreApi/authentication.php') 
             .then (function (response) {
                 // handle success
-                console.log(response);                
+                // console.log(response);                
             })
             .catch (function (error) {
                 // handle error
@@ -28,7 +28,7 @@ let signInPage = new Vue ({
 
             axios.post('http://localhost/onlineStoreApi/authentication.php?crud=signIn', userData)
             .then (function(response) {
-                console.log(response);
+                // console.log(response);
                 signInPage.newLogIn = { email : "", password : "" };
 
                 if (response.data.error) {  

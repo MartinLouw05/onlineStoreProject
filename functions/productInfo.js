@@ -141,7 +141,7 @@ let productInfoPage = new Vue ({
             axios.post('http://localhost/onlineStoreApi/product.php?crud=getBrandProducts', form_data) 
             .then(function (response) {
                 // handle success  
-                console.log(response)
+                // console.log(response)
                 productInfoPage.brandProductItem = response.data.product;
             })
             .catch(function (error) {
@@ -173,7 +173,7 @@ let productInfoPage = new Vue ({
 
             axios.post('http://localhost/onlineStoreApi/cart.php?crud=addToCart', form_data)
             .then (function(response) {
-                console.log(response);
+                // console.log(response);
 
                 if (response.data.error) {
                     console.log(response.data.message);
@@ -246,11 +246,11 @@ let productInfoPage = new Vue ({
     },
     //Run the functions on start
     created : function() {
-        this.getActiveUser();
-        this.getProductInfo();        
+        this.getActiveUser();        
     },
     //Continiously run these functions
     mounted() {
+        this.getProductInfo();
         this.getCategories();
     }
 })
